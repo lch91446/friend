@@ -1,0 +1,13 @@
+/*.myprogress{margin:5px 0}*/
+.logo{margin-top: 100rpx;margin-bottom: 120rpx}
+.logo image{width:640rpx;}
+.content{text-align: center}
+.logo{margin-top: 100rpx;margin-bottom: 120rpx}
+.logo image{width:640rpx;}
+.font-16px{font-size: 32rpx}
+.nav-btn-area{text-align: center}
+.btn{width: 80%;height: 50rpx;display: inline-block;border-radius: 10rpx;padding: 10rpx;margin-top: 20rpx}
+.blue{background: #2f9cf9;color: white}
+.white{background: white;color: black}
+.border-1px{border: 1px solid black}
+.nav-btn-area .txt-area{color: #2f9cf9;padding: 10rpx;}

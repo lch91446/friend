@@ -1,0 +1,24 @@
+<!--pages/my/index.wxml-->
+<view class="container">
+    <view class="user-info">
+      <block wx:if="{{userInfo.avatarUrl != ''}}">
+          <image bindtap="uploadTap" src="{{userInfo.avatarUrl}}"></image>
+      </block>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+    <block wx:if="{{userInfo.avatarUrl != ''}}">
+      <view wx:if="{{userInfo.phone != ''}}" class="my-wallet tapbar">
+          <text>修改资料</text>
+      </view>
+      <view wx:if="{{userInfo.phone == ''}}" class="my-wallet tapbar">
+          <navigator url="/pages/bind/index" hover-class="navigator-hover">填写资料</navigator>
+      </view>
+      <view class="my-wallet tapbar">
+          <text>我的消息</text>
+      </view>
+      <button lang="zh_CN" bindtap = "logout" class="btn-login" hover-class="gray" type="{{bType}}" >注销登陆</button>
+    </block>
+    <block wx:else>
+      <button lang="zh_CN" bindtap = "login" class="btn-login" hover-class="gray" type="{{bType}}" >登陆</button>
+    </block>  
+</view>
