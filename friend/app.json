@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/ListView/ListView",
     "pages/my/index",
+    
     "pages/avatarUpload/upload/upload",
     "pages/index/index",
     "pages/login/index",
     "pages/activation/index",
-    "pages/register/index",
-    "pages/ListView/ListView"
+    "pages/register/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
