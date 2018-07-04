@@ -23,7 +23,8 @@ Page({
     coupons: [],
     searchInput: '',
     currentSize: 0,
-    words: []
+    words: [],
+    token: ''
   },
 
   tabClick: function (e) {
@@ -86,29 +87,55 @@ Page({
     var that = this
 
     var _this = this;
+
+    this.setData({
+      token: app.jamasTool.getUserToken()
+    })
+
+    let params = {
+      url: 'Operate/getAds',
+      header: {
+        'Content-Type': 'application/json',
+        'token': this.data.token
+      },
+      method: 'post',
+      data: {
+        position: 0
+      },
+      needLoadingIndicator: true,
+      success: (rel) => {
+        console.log(rel)
+        if (rel.data.code == "1") {
+          that.setData({
+            banners: rel.data.data.groupads
+          });
+          console.log(this.data.banners);
+        }else{
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: rel.data.msg,
+            success: () => {
+              if (rel.data.code == "401") {
+                this.redirectToLogin()
+              }
+            }
+          })
+        }
+      }
+    }
+    app.jamasTool.request(params);
+
     register.register(this);
     //获取words  
     this.doLoadData(0, 20);
 
-    wx.request({
-      url: 'https://api.it120.cc/' + app.globalData.subDomain + '/banner/list',
-      data: {
-        key: 'mallName'
-      },
-      success: function (res) {
-        if (res.data.code == 404) {
-          wx.showModal({
-            title: '提示',
-            content: '请在后台添加 banner 轮播图片',
-            showCancel: false
-          })
-        } else {
-          that.setData({
-            banners: res.data.data
-          });
-        }
-      }
-    })
+
+    console.log(this)
+
+
+
+
     wx.request({
       url: 'https://api.it120.cc/' + app.globalData.subDomain + '/shop/goods/category/all',
       success: function (res) {
@@ -251,5 +278,10 @@ Page({
   toSearch: function () {
     console.log(12);
     this.getGoodsList(this.data.activeCategoryId);
-  }
+  },
+  redirectToLogin: function () {
+    wx.redirectTo({
+      url: '../login/index'
+    })
+  },
 })
