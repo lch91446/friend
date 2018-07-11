@@ -2,92 +2,133 @@
 <!--1px = 750/320 = 2.34rpx;-->
 
 <include src="../../utils/loadMoreFooterView.wxml"/>
+<import src="../../utils/wux-components/filterbar/filterbar.wxml" />
+
+<view class="page" style="{{ pageStyle }}">
+    <view class="page__bd">
+        <template is="filterbar" data="{{ ...$wux.filterbar }}" />
+        <!-- <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ repos }}" wx:key="">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{ item.owner.avatar_url }}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{ item.name }}</view>
+                        <view class="weui-media-box__desc">{{ item.description }}</view>
+                        <view class="weui-media-box__info">
+                            <view class="weui-media-box__info__meta">forks: {{ item.forks_count }}</view>
+                            <view class="weui-media-box__info__meta">stars: {{ item.stargazers_count }}</view>
+                            <view class="weui-media-box__info__meta">date: {{ item.date }}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view> -->
+    </view>
+</view>
 
 <view class="container">
-
+    
     <scroll-view class="scroll_container" scroll-y="true" style="position:relation;width:100%;left:0;height:{{windowHeight}}px;top:{{loadMoreHeight == 0? refreshHeight:-loadMoreHeight}}px;bottom:{{loadMoreHeight}}px;"  bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper" bindtouchstart="start" bindtouchend="end" > 
       <view style="width:100%;height:100%" bindtouchmove="move">
-        <!-- <block wx:for="{{words}}">  
-                <view class="item-style">{{item}}</view>  
-        </block>   -->
 
+        <view class="show_swiper" style='width: {{winWidth}}px;'>
+          <view class='show_swiper_list'
+                bindtouchstart='swiperTouchstart'
+                bindtouchmove='swiperTouchmove'
+                bindtouchend='swiperTouchend'
+                style='width: {{allWidth}}px;position: relative;left: {{(winWidth-itemWidth)/2}}px;'>
 
-        <!-- banner -->
-        <view class="swiper-container">
-          <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-              <block wx:for="{{banners}}" wx:key="id">
-                  <swiper-item>
-                      <image  bindtap="tapBanner" data-id="{{item.id}}" src="{{item.image}}" class="slide-image" width="750rpx" height="562.5rpx"/>
-                  </swiper-item>
-              </block>
-          </swiper>
-          <view class="dots">  
-              <block wx:for="{{banners}}" wx:key="unique">  
-                  <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
-              </block>  
-          </view>  
-        </view>
+            <block wx:for="{{swiperList}}">
+              <view class='swiper_item' 
+                    data-curid="{{curIndex}}" 
+                    data-index='{{index}}' 
+                    animation="{{curIndex == index? animationToLarge : animationToSmall}}" 
+                    style='width: {{itemWidth}}px;transform: scale({{curIndex == index ? 1 : scale}});-'>
 
-        <!-- categories -->
-        <view class="type-container">
-          <scroll-view class="type-navbar" scroll-x="true">
-            <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
-              <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
-              {{item.name}}
+                
+                  <image src= "{{item.image}}"></image>
+
               </view>
-            </view>
-          </scroll-view>
-        </view>
+            </block>
 
-        <!-- search -->
-        <view class="search-view" style="background:{{ scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(105,195,170, 1), rgba(105,195,170, 0.3))' :( scrollTop<200 ? 'rgba(105,195,170,'+(scrollTop/400+0.3) +')' : 'rgba(105,195,170,1)')  }} ">
-          <view class="search-content">
-            <image src="/images/search-pic.png" class="search-icon" />
-            <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
-            </input>
-            <button class='search-btn' bindtap="toSearch">搜索</button>
           </view>
         </view>
 
-        <!-- notice -->
-        <view wx:if="{{noticeList}}" class="notice">
-          <view class="notice_iteml">公告：</view>
-          <swiper wx:if="{{noticeList}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="3000">
-            <navigator wx:for-items="{{noticeList.dataList}}" wx:key="id" url="/pages/notice/show?id={{item.id}}" open-type="navigate">
-              <swiper-item >
-                <view class="notice_itemr">{{item.title}}</view>
-              </swiper-item>
-            </navigator>
-          </swiper>
+        <view class="nav">
+          <view class="nav-item">
+            1
+          </view>
+          <view class="nav-item">
+            2
+          </view>
+          <view class="nav-item">
+            3
+          </view>
+          <view class="nav-item">
+            4
+          </view>
         </view>
 
-        <!-- coupons -->
-        <view class="coupons" hidden="{{hasNoCoupons}}">
-          <scroll-view class="coupons-scroll" scroll-x="true">
-            <view class="coupons-item" wx:for-items="{{coupons}}" wx:for-index="idx" wx:key="id"  bindtap="gitCoupon" data-id="{{item.id}}">
-            <view style="font-size: 35rpx"> ￥ {{item.moneyMax}}元 </view>
-            <view> {{item.name}} </view>
-            <view> 满 {{item.moneyHreshold}} 元使用 </view>
-            <view wx:if="{{item.dateEndType == 0}}"> {{item.dateEnd}} 前有效 </view>
-            <view wx:if="{{item.dateEndType == 1}}"> 领取 {{item.dateEndDays}} 天内有效 </view>
+
+    
+        <view class="waterfall">
+            <view class="view" style="margin-right:20rpx">
+                <block wx:for="{{goods}}" wx:key="index">
+                  <block wx:if="{{index % 2 == 0}}">
+                    <view >
+                      <image src="{{item.avatar}}" mode="widthFix"></image>
+                      <text>{{ item.nickname }}</text>
+                    </view>
+                  </block>    
+                </block>
             </view>
-          </scroll-view>
+            <view class="view">
+                <block wx:for="{{goods}}" wx:key="index">
+                  <block wx:if="{{index == 1 && goodmidlist[0].image }}">
+                    <view >
+                      <image src="{{goodmidlist[0].image}}" mode="widthFix"></image>
+                      <text wx:if="{{goodmidlist[0].title}}">{{ goodmidlist[0].title }}</text>
+                    </view> 
+                  </block> 
+                  <block wx:if="{{index % 2 == 1}}">
+                    <view >
+                      <image src="{{item.avatar}}" mode="widthFix"></image>
+                      <text>{{ item.nickname }}</text>
+                    </view>
+                  </block>   
+                </block>
+            </view>
         </view>
+        
 
         <!-- goods-container -->
-        <view class="goods-container">
-          <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
-              <view class="img-box">
-                <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
+        <!-- <view class="goods-container">
+          <view class="container-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+ 
+              <view class="goods-box" wx:if="{{index == 1}}">
+                <view class="img-box">
+                  <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
+                </view>
+              </view>  
+             
+              <view wx:else class="goods-box">
+                <view class="img-box">
+                  <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
+                </view>
+                <view class="goods-title">{{item.name}}</view>
+                <view style='display:flex;'>
+                <view class="goods-price">¥ {{item.minPrice}}</view>
+                <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+                </view>  
               </view>
-              <view class="goods-title">{{item.name}}</view>
-              <view style='display:flex;'>
-              <view class="goods-price">¥ {{item.minPrice}}</view>
-              <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
-              </view>           
+
+             
+         
           </view> 
 
-        </view>
+        </view> -->
       </view>
     </scroll-view>
   
@@ -97,3 +138,8 @@
 
     <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
 </view>
+
+
+
+
+

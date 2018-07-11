@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/articledetail/index",
     "pages/article/index",
     
-    "pages/index/index",
+    
     "pages/ListView/ListView",
     "pages/my/index",
     
