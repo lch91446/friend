@@ -1,4 +1,4 @@
-@import "../../style/common.wxss";
+@import "../common.wxss";
 
 .cropper{
     position: absolute;

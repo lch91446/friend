@@ -3,9 +3,9 @@ var app = getApp();
 Page({
   data: {
     registBtnTxt: "注册",
-    registBtnBgBgColor: "#ff9900",
+    registBtnBgBgColor: "#0092ff",
     getSmsCodeBtnTxt: "获取验证码",
-    getSmsCodeBtnColor: "#ff9900",
+    getSmsCodeBtnColor: "#ffffff",
     // getSmsCodeBtnTime:60,
     btnLoading: false,
     registDisabled: false,
@@ -77,7 +77,7 @@ Page({
           if (count > 0) {
             this.setData({
               getSmsCodeBtnTxt: count + ' s',
-              getSmsCodeBtnColor: "#999",
+              getSmsCodeBtnColor: "#ffffff",
               smsCodeDisabled: true
             });
           }
@@ -89,13 +89,13 @@ Page({
 
               this.setData({
                 getSmsCodeBtnTxt: count + ' s',
-                getSmsCodeBtnColor: "#999",
+                getSmsCodeBtnColor: "#ffffff",
                 smsCodeDisabled: true
               });
             } else {
               this.setData({
                 getSmsCodeBtnTxt: "获取验证码",
-                getSmsCodeBtnColor: "#ff9900",
+                getSmsCodeBtnColor: "#ffffff",
                 smsCodeDisabled: false
               });
               count = 60;
@@ -120,8 +120,8 @@ Page({
     this.mysubmit(param);
   },
   mysubmit: function (param) {
-    var flag = this.checkUserName(param.username)&&this.checkPhone(param.phone) && this.checkPassword(param)
-    var that = this;
+    var flag = this.checkUserName(param.username) && this.checkPhone(param.phone) && this.checkPassword(param) && this.checkSmsCode(param)
+    var that = this; 
     if (flag) {
       this.setregistData1();
 
@@ -141,29 +141,25 @@ Page({
         },
         success: (rel) => {
           console.log(rel)
-          wx.showModal({
-            title: '提示',
-            showCancel: false,
-            content: rel.data.msg
-          })
+
+          if (rel.data.code) {
+            wx.setStorageSync("userinfo", rel.data.data.userinfo)
+            wx.setStorageSync("token", rel.data.data.userinfo.token)
+            this.redirectTo()
+          }else{
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: rel.data.msg
+            })
+            this.setregistData2();
+          }
+          
         }
 
 
       }
       app.jamasTool.request(params);
-
-
-
-
-      // setTimeout(function () {
-      //   wx.showToast({
-      //     title: '成功',
-      //     icon: 'success',
-      //     duration: 1500
-      //   });
-      //   that.setregistData2();
-      //   that.redirectTo(param);
-      // }, 2000);
     }
   },
   getPhoneNum: function (e) {
@@ -176,7 +172,7 @@ Page({
     this.setData({
       registBtnTxt: "注册中",
       registDisabled: !this.data.registDisabled,
-      registBtnBgBgColor: "#999",
+      registBtnBgBgColor: "#0092ff",
       btnLoading: !this.data.btnLoading
     });
   },
@@ -184,7 +180,7 @@ Page({
     this.setData({
       registBtnTxt: "注册",
       registDisabled: !this.data.registDisabled,
-      registBtnBgBgColor: "#ff9900",
+      registBtnBgBgColor: "#0092ff",
       btnLoading: !this.data.btnLoading
     });
   },
@@ -238,6 +234,7 @@ Page({
     }
   },
   getSmsCode: function () {
+    console.log(111)
     var phoneNum = this.data.phoneNum;
     var that = this;
 
@@ -277,13 +274,13 @@ Page({
 
           that.setData({
             getSmsCodeBtnTxt: count + ' s',
-            getSmsCodeBtnColor: "#999",
+            getSmsCodeBtnColor: "#ffffff",
             smsCodeDisabled: true
           });
         } else {
           that.setData({
             getSmsCodeBtnTxt: "获取验证码",
-            getSmsCodeBtnColor: "#ff9900",
+            getSmsCodeBtnColor: "#ffffff",
             smsCodeDisabled: false
           });
           count = 60;
@@ -295,8 +292,8 @@ Page({
   },
   checkSmsCode: function (param) {
     var smsCode = param.smsCode.trim();
-    var tempSmsCode = '000000';//演示效果临时变量，正式开发需要通过wx.request获取
-    if (smsCode != tempSmsCode) {
+
+    if (smsCode == '') {
       wx.showModal({
         title: '提示',
         showCancel: false,
@@ -307,11 +304,10 @@ Page({
       return true;
     }
   },
-  redirectTo: function (param) {
-    //需要将param转换为字符串
-    param = JSON.stringify(param);
+  redirectTo: function () {
+
     wx.redirectTo({
-      url: '../main/index?param=' + param//参数只能是字符串形式，不能为json对象
+      url: '../fillinfo/index'
     })
   }
 

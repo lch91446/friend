@@ -24,19 +24,6 @@
 }
 
 
-.goods-container{
-  /* display: flex; */
-  /* justify-content: space-between;  
-  flex-wrap:wrap;
-  box-sizing: content-box;
-  padding: 24rpx; */
-}
-.container-box{
-  /* float: left;
-  width: 50%;
-   display: block; */
-   
-}
 .goods-box{
   display: inline-block;
 
@@ -109,7 +96,7 @@
 }
 
 .show_swiper_list {
-  height: 270px;
+  height: 326rpx;
 }
 .swiper_item {
   float: left; 
@@ -125,6 +112,7 @@
 image{
   width: 100%;
   border-radius: 15rpx;
+  height:326rpx;
   /* box-shadow: 5rpx 5rpx 15rpx 5rpx #666 */
 }
 
@@ -134,6 +122,7 @@ image{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30rpx;
 }
 .nav .nav-item{
   display: -webkit-flex; /* Safari */
@@ -145,8 +134,6 @@ image{
   margin: 10rpx;
   height: 100rpx;
 }
-
-
 
 .waterfall{
   margin: 30rpx 30rpx 0 30rpx;

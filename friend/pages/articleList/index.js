@@ -1,15 +1,11 @@
-var WxParse = require('../../utils/wxParse/wxParse.js');
-
 var app = getApp();
-
 Page({
   data: {
   },
   onLoad: function () {
   
     let params = {
-      // url: 'operate/getArticlesList',
-      url: 'operate/getArticle',
+      url: 'operate/getArticlesList',
       header: {
         'Content-Type': 'application/json',
         'token': this.data.token
@@ -23,8 +19,6 @@ Page({
         var article = rel.data.data.article.content
         console.log(article)
         console.log(rel.data.data.article.content)
-        WxParse.wxParse('article', 'html', article, this, 5);
-
       }
     }
     app.jamasTool.request(params);

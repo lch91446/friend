@@ -1,15 +1,18 @@
 /* @import "../index/index.wxss"; */
-.content{text-align: center}
-.logo{margin-top: 50rpx;margin-bottom: 60rpx}
-.logo image{width:640rpx;}
+.content{text-align: center;position: relative}
+.logo{margin-top: 50rpx;margin-bottom: 60rpx;position:relative;
+left:150rpx;text-align: left}
+.logo image{width:223rpx;height: 58rpx;
+}
 
 
-input{padding-left: 30rpx;}
-.input-area,.btn-area{text-align: center;padding: 10rpm;font-size: 16px;color: black;width: 100%;margin: 0 auto}
-.input-area input{display: inline-block;width: 90%;height: 80rpx;margin-top: 10rpx;border: 1px solid #2f9cf9;border-radius: 10rpx;text-align: left}
-.btn-area{width: 90%;margin-top: 20rpx}
+.phcolor{color:#cccccc;}
+input{padding-left: 7rpx}
+.input-area,.btn-area{position: relative;margin: 70rpx 100rpx 0rpx 100rpx;padding: 10rpx;font-size: 16px;color: black;text-align: center;}
+.input-area input{width: 100%;height: 70rpx;border-bottom:1px solid #efefef;text-align: left;margin-bottom: 60rpx;}
+.btn-area{margin-top: -30rpx;}
 .txt-area{margin-top: 30rpx;color: #ccc}
-
-.smsCode{display: flex;justify-content:space-between;padding-right: 3%;padding-left: 3%}
+.btn-area button{color: #fff}
+.smsCode{position: relative;width: 216rpx;top:-130rpx;left:320rpx;z-index: 999}
 .smsCode input{width: 336rpx;}
-.smsCode .getSmsCodeBtn{font-size: 30rpx; color:#fff;width:216rpx;box-sizing: border-box; height: 80rpx;line-height: 80rpx;margin-top: 10rpx;margin-right: 0}
+.smsCode .getSmsCodeBtn{width:216rpx;box-sizing: border-box; height: 50rpx;margin-right:0;font-size: 30rpx; color:#676767;line-height: 50rpx;border:1px solid #676767;}

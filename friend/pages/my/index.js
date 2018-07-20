@@ -1,17 +1,16 @@
-// pages/my/index.js
 var app = getApp();
 Page({
   data:{
     // 用户信息
     userInfo: {
       avatarUrl: "",
-      nickName: "未登录",
-      phone:''
+      nickName: "",
+      identification_status: "",
+      followMeCount: 0,
+      myFolloweCount: 0,
+      seeMeCount: 0,
     },
-    bType: "primary", // 按钮类型
     token: "",
-    lock: false, //登录按钮状态，false表示未登录
-    // testurl: "http://wx.haining.cn/mag/circle/v1/forum/threadWapPage?tid=1290964&themecolor=ffbc00&circle_id=143"
   },
 // 页面加载
   onLoad:function(){
@@ -38,68 +37,56 @@ Page({
       }
     })
 
-    wx.getStorage({
-      key: 'userinfo',
-      // 能获取到则显示用户信息，并保持登录状态，不能就什么也不做
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          userInfo: {
-            avatarUrl: res.data.avatar,
-            nickName: res.data.nickname,
-            phone: res.data.mobile
-          }
-        })
-      }
-    });
-  },
-  onShow: function(){
-    console.log("onShow");
-  },
-  logout: function(){
-
-    wx.removeStorage({
-      key: 'token',
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
-    wx.removeStorage({
-      key: 'userinfo',
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
     this.setData({
-      userInfo: {
-        avatarUrl: "",
-        nickName: "未登录",
-        phone: ''
-      },
-    });
-    let params = {
-      url: 'user/logout',
+      token: app.jamasTool.getUserToken()
+    })
+
+    let params3 = {
+      url: 'Operate/getMyFansCount',
       header: {
         'Content-Type': 'application/json',
-        'token' : this.data.token
+        'token': this.data.token
       },
       method: 'post',
-      data: {
-      },
+      data: {},
       needLoadingIndicator: true,
       success: (rel) => {
         console.log(rel)
-        wx.showModal({
-          title: '提示',
-          showCancel: false,
-          content: rel.data.msg,
-        })
+        if (rel.data.code == "1") {
+          wx.setStorageSync("userinfo", rel.data.data.userinfo)
+          this.setData({
+            userInfo: {
+              avatarUrl: rel.data.data.userinfo.avatar,
+              nickName: rel.data.data.userinfo.nickname,
+              identification_status: rel.data.data.userinfo.identification_status,
+              followMeCount: rel.data.data.followMeCount,
+              myFolloweCount: rel.data.data.myFolloweCount,
+              seeMeCount: rel.data.data.seeMeCount
+            }
+          })
+          console.log(this.data);
+        } else if (rel.data.code == "401"){
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: rel.data.msg,
+            success: (res)=>{
+              this.redirectToLogin();
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: rel.data.msg
+          })
+        }
       }
     }
-    app.jamasTool.request(params);
+    app.jamasTool.request(params3);
   },
-  login: function () {
-    this.redirectToLogin()
+  onShow: function(){
+    console.log("onShow");
   },
   uploadTap: function(){
     wx.chooseImage({
@@ -114,6 +101,21 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      console.log(ops.target)
+    }
+    return {
+      title: app.globalData.shareProfile,
+      path: 'pages/my/index',
+      success: function (res) {
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   },
   redirectToLogin: function () {
     wx.redirectTo({

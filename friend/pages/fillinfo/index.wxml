@@ -1,0 +1,79 @@
+
+<view class='page'>
+  <block wx:if="{{ step == 0 }}">
+    <view class='gender-container'>
+      <view>
+        <text class='h5-title'>
+            请选择你的性别
+        </text>
+      </view>
+
+      <radio-group class="gender-container-radio" bindchange="genderChange">
+        <view class='gender-famale'>
+          <label for='gender_famale'>
+              <image wx:if="{{genderFamaleClass}}" src='../../images/girl1.png'></image>
+              <image wx:else src='../../images/girl2.png'></image>
+          </label>
+          <radio value="female" id="gender_famale" class="{{genderFemaleClass}}" color='#0092ff'></radio>
+          <text class='gender-text'>
+            女生
+          </text>
+        </view>
+        <view class='gender-male'>
+          <label for='gender_male'>
+              <image wx:if="{{genderMaleClass}}" src='../../images/boy1.png'></image>
+              <image wx:else src='../../images/boy2.png'></image>
+          </label>
+          <radio value="male" id="gender_male" class="{{genderMaleClass}}" color='#0092ff'></radio>
+          <text class='gender-text'>
+            男生
+          </text>
+        </view> 
+      </radio-group>
+    
+    </view>
+  </block>
+
+  <block wx:if="{{ step== 1 }}">
+    <view class='year-container'>
+      <view>
+        <text class='h5-title'>
+            请选择您的出生年月日
+        </text>
+      </view>
+      <view class='date-picker'>  
+        <zan-date-picker
+          picker-view
+          bindchange="nativeChange"
+          bindcancel="cancel"
+          not-use="{{['hours','minutes', 'seconds']}}"
+        />
+      </view>
+
+    </view>
+  </block>
+
+  <block wx:if="{{ step == 2 }}">
+    <view class='avatar-container' bindtap='chooseimage'>
+      <view class='image'>
+        <image src="{{avatar?avatar:'../../images/avatar.png'}}"></image>
+        <text>添加本人照片</text>
+      </view>
+      <view class='avatar-container-detial'>
+        <text class='nickname'>你好，{{userinfo.name}}</text>
+        <text class='detail'>选择自己最好的一张照片，可将配对 成功率提升10倍哦！</text>
+      </view>
+    </view>
+  </block>
+
+
+
+
+  <button class="btn-next btn" bindtap="clicknext">{{steptext}}</button>
+</view>
+
+
+
+
+
+

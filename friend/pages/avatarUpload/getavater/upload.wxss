@@ -1,0 +1,19 @@
+@import "../common.wxss";
+
+.cropper{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cropper-buttons{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.cropper-buttons{
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    font-size:16px;
+}

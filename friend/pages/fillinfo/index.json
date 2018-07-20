@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "zan-date-picker": "../../utils/ZanUI/datetime-picker/index",
+    "zan-cell": "../../utils/ZanUI/cell/index"
+  }
+}

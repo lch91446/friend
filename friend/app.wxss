@@ -1,7 +1,7 @@
 /**app.wxss**/
 .container{
 	background-color: #f2f2f2;
-	height: 100vh;
+
 }
 .title{
 	background-color: #f2f2f2;
@@ -9,16 +9,14 @@
 	font-size: 28rpx;
 	color: #000;
 }
-.tapbar{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: #fff;
-	padding: 40rpx;
-}
+
 .btn-charge{
 	width: 90%;
 	background-color: #b9dd08;
 	margin: 40rpx auto 30rpx;
 	text-align: center;
+}
+.bottom{
+  background-color: #f2f2f2;
+  height: 30rpx;
 }

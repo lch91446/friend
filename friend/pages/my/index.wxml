@@ -1,24 +1,89 @@
 <!--pages/my/index.wxml-->
 <view class="container">
-    <view class="user-info">
+    <view class="user-info tapbar">
       <block wx:if="{{userInfo.avatarUrl != ''}}">
+        <view class='user-avatar'>
           <image bindtap="uploadTap" src="{{userInfo.avatarUrl}}"></image>
+        </view>
       </block>
-      <text>{{userInfo.nickName}}</text>
+      <view class='edit-user'>
+        <view class='edit-user2'>
+          <text class='nickName'>{{userInfo.nickName}}</text>
+          <text class='edit-des'>查看或编辑个人资料</text>
+        </view>
+        <view class='go'>
+          <text class='arrow'> ></text> 
+        </view>    
+      </view>
+ 
     </view>
-    <block wx:if="{{userInfo.avatarUrl != ''}}">
-      <view wx:if="{{userInfo.phone != ''}}" class="my-wallet tapbar">
-          <text>修改资料</text>
+
+    <view>
+      
+      <view class='tapbar'>
+        <view class='cell blue'>
+          <text class='left'>开通实名认证</text>
+          <view wx:if="{{userInfo.identification_status=='0'}}" class='go'>
+            <text class='capsule tobe'>待认证</text>
+          </view>
+          <view wx:elif="{{userInfo.identification_status=='1'}}" class='go'>
+            <text class='capsule tobe'>待审核</text>
+          </view>  
+          <view wx:else class='go'>
+            <text class='capsule had'>已认证</text>
+          </view> 
+        </view>
       </view>
-      <view wx:if="{{userInfo.phone == ''}}" class="my-wallet tapbar">
-          <navigator url="/pages/bind/index" hover-class="navigator-hover">填写资料</navigator>
+
+      <view class='tapbar'>
+        <view class='cell border-bottom'>
+          <view class='left'>
+           <text>我的关注</text>        
+          </view> 
+          <view class='go'>
+            <view>
+              <text class='num'>{{userInfo.myFolloweCount}}</text> 
+              <text class='arrow'> ></text> 
+            </view>  
+          </view>  
+        </view>
+        <view class='cell border-bottom'>
+          <view class='left'>
+           <text>我的粉丝</text>        
+          </view>        
+          <view class='go'>
+            <view>
+              <text class='num'>{{userInfo.followMeCount}}</text> 
+              <text class='arrow'> ></text> 
+            </view>  
+          </view>  
+        </view>
+        <view class='cell border-bottom'>
+          <view class='left'>
+           <text>谁看过我</text>        
+          </view>          
+          <view class='go'>
+            <view>
+              <text class='num'>{{userInfo.seeMeCount}}</text> 
+              <text class='arrow'> ></text> 
+            </view>  
+          </view>  
+        </view>
+        <view class='cell '>
+          <view class='left'>
+             <button class='share' id="shareBtn" open-type="share" hover-class="other-button-hover">
+              邀请好友
+            </button>         
+          </view>          
+          <view class='go'>
+            <text class='arrow'> ></text> 
+          </view>  
+        </view>
       </view>
-      <view class="my-wallet tapbar">
-          <text>我的消息</text>
+
+      <view class='tapbar'>
+        <view class='cell'>设置</view>
       </view>
-      <button lang="zh_CN" bindtap = "logout" class="btn-login" hover-class="gray" type="{{bType}}" >注销登陆</button>
-    </block>
-    <block wx:else>
-      <button lang="zh_CN" bindtap = "login" class="btn-login" hover-class="gray" type="{{bType}}" >登陆</button>
-    </block>  
+    </view>
+
 </view>

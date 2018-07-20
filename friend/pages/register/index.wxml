@@ -1,14 +1,15 @@
 <view class="content">
     <view class = "logo">
-        <image mode="aspectFit" src="/images/u2.png"></image>
+        <image mode="aspectFit" src="/images/Hello.png"></image>
     </view>
     <form bindsubmit="formSubmit">
         <view class="input-area">
-          <input id="username" name="username" maxlength='30' type="text" placeholder="用户名"/>
-          <input id="password" name="password" maxlength='20' type="password" placeholder="密码" />
-          <input id="phone" name="phone" maxlength='11' type="text" placeholder="手机号" bindchange="getPhoneNum"/>
+          <input id="username" placeholder-class="phcolor" name="username" maxlength='30' type="text" placeholder="请输入昵称"/>
+          <input id="password" placeholder-class="phcolor" name="password" maxlength='20' type="password" placeholder="请设置密码" />
+          <input id="phone" placeholder-class="phcolor" name="phone" maxlength='11' type="text" placeholder="请输入手机号" bindchange="getPhoneNum"/>
+          <input id="smsCode" placeholder-class="phcolor" name="smsCode" maxlength='6' type="text" placeholder="请输入验证码" />
           <view class="smsCode">
-            <input id="smsCode" name="smsCode" maxlength='6' type="text" placeholder="验证码" />
+            
             <button bindtap = "getSmsCode" disabled="{{smsCodeDisabled}}" style="background-color:{{getSmsCodeBtnColor}}"   class="getSmsCodeBtn">{{getSmsCodeBtnTxt}}</button>
           </view>
 
@@ -16,7 +17,7 @@
         <view class="btn-area">
             <button  disabled="{{registDisabled}}" style="background-color:{{registBtnBgBgColor}}"   formType="submit"  loading="{{btnLoading}}"> {{registBtnTxt}} </button>
             <view class="txt-area">
-                 <navigator redirect url="../login/index"><text class="register">登录账号</text></navigator>
+                 我已阅读并同意<navigator redirect url="../login/index"><text class="register">海论交友用户协议</text></navigator>
             </view>
         </view>
     </form>

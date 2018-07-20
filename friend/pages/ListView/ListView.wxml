@@ -40,12 +40,12 @@
                 bindtouchend='swiperTouchend'
                 style='width: {{allWidth}}px;position: relative;left: {{(winWidth-itemWidth)/2}}px;'>
 
-            <block wx:for="{{swiperList}}">
+            <block wx:for="{{swiperList}}" wx:key="{{curIndex}}">
               <view class='swiper_item' 
                     data-curid="{{curIndex}}" 
                     data-index='{{index}}' 
                     animation="{{curIndex == index? animationToLarge : animationToSmall}}" 
-                    style='width: {{itemWidth}}px;transform: scale({{curIndex == index ? 1 : scale}});-'>
+                    style='width: {{itemWidth}}px;transform: scale({{curIndex == index ? 1 : scale}});'>
 
                 
                   <image src= "{{item.image}}"></image>
@@ -101,34 +101,7 @@
                 </block>
             </view>
         </view>
-        
 
-        <!-- goods-container -->
-        <!-- <view class="goods-container">
-          <view class="container-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
- 
-              <view class="goods-box" wx:if="{{index == 1}}">
-                <view class="img-box">
-                  <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
-                </view>
-              </view>  
-             
-              <view wx:else class="goods-box">
-                <view class="img-box">
-                  <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
-                </view>
-                <view class="goods-title">{{item.name}}</view>
-                <view style='display:flex;'>
-                <view class="goods-price">¥ {{item.minPrice}}</view>
-                <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
-                </view>  
-              </view>
-
-             
-         
-          </view> 
-
-        </view> -->
       </view>
     </scroll-view>
   
