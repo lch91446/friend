@@ -100,6 +100,45 @@
 }
 
 picker {
-display:inline-block;
+  display:inline-block;
+}
+
+.label-containar{
+  margin: 50rpx 30rpx;
+  font-weight: bold;
+}
+.label-containar .label-header{
+  margin-bottom: 50rpx;
+  font-size: 38rpx;
+  color: #000000;
+}
+.label-containar .label-type{
+  font-size: 26rpx; 
+}
+.label-containar .label-type .label-type-text{
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+}
+.label-containar .label-type .label{
+  display: inline-block;
+  padding: 23rpx;
+  border-radius: 6rpx;
+  margin: 0rpx 27rpx 40rpx 0rpx;
+}
+.bg-blue{background: #0092ff;color: #fff}
+.bg-gyay{background: #f5f5f5;color: #000}
+.label-num{color: #0092ff;padding-left: 20rpx}
+.bottom{
+  background-color: #f2f2f2;
+  height: 130rpx;
+}
+.btn-area{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 999
+}
+.btn-area button{
+  border-radius:0px;
 }
 

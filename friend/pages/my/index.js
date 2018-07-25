@@ -9,6 +9,7 @@ Page({
       followMeCount: 0,
       myFolloweCount: 0,
       seeMeCount: 0,
+      myAlbums: 0
     },
     token: "",
   },
@@ -61,7 +62,8 @@ Page({
               identification_status: rel.data.data.userinfo.identification_status,
               followMeCount: rel.data.data.followMeCount,
               myFolloweCount: rel.data.data.myFolloweCount,
-              seeMeCount: rel.data.data.seeMeCount
+              seeMeCount: rel.data.data.seeMeCount,
+              myAlbums: rel.data.data.myAlbums
             }
           })
           console.log(this.data);

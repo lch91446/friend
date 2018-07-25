@@ -1,23 +1,24 @@
 <!--pages/my/index.wxml-->
 <view class="container">
-    <view class="user-info tapbar">
-      <block wx:if="{{userInfo.avatarUrl != ''}}">
-        <view class='user-avatar'>
-          <image bindtap="uploadTap" src="{{userInfo.avatarUrl}}"></image>
+    <navigator url="/pages/basicinfo/index" hover-class="navigator-hover">
+      <view class="user-info tapbar">
+        <block wx:if="{{userInfo.avatarUrl != ''}}">
+          <view class='user-avatar'>
+            <image bindtap="uploadTap" src="{{userInfo.avatarUrl}}"></image>
+          </view>
+        </block>
+        <view class='edit-user'>
+          <view class='edit-user2'>
+            <text class='nickName'>{{userInfo.nickName}}</text>
+            <text class='edit-des'>查看或编辑个人资料</text>
+          </view>
+          <view class='go'>
+            <text class='arrow'> ></text> 
+          </view>    
         </view>
-      </block>
-      <view class='edit-user'>
-        <view class='edit-user2'>
-          <text class='nickName'>{{userInfo.nickName}}</text>
-          <text class='edit-des'>查看或编辑个人资料</text>
-        </view>
-        <view class='go'>
-          <text class='arrow'> ></text> 
-        </view>    
+  
       </view>
- 
-    </view>
-
+    </navigator>
     <view>
       
       <view class='tapbar'>
@@ -36,6 +37,20 @@
       </view>
 
       <view class='tapbar'>
+        <navigator url="/pages/myalbum/index" hover-class="navigator-hover">
+          <view class='cell border-bottom'>
+            <view class='left'>
+            <text>我的相册</text>        
+            </view> 
+            <view class='go'>
+              <view>
+                <text class='num'>{{userInfo.myAlbums}}</text> 
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+        </navigator>
+
         <view class='cell border-bottom'>
           <view class='left'>
            <text>我的关注</text>        

@@ -1,0 +1,28 @@
+<import src="../../utils/wux-components/gallery/gallery.wxml" />
+<template is="gallery" data="{{ ...$wux.gallery }}"/>
+
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files">
+   
+                                <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+                                    <view class="weui-uploader__file" bindtap="showGallery" data-current="{{ index }}">
+                                        <image class="weui-uploader__img" src="{{ item.image }}" />
+                                    </view>
+                                </block>
+                                <view class="weui-uploader__file" bindtap="uploadImg" >
+                                        <image class="weui-uploader__img" src="/images/add.png" />
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

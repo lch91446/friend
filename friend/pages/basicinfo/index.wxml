@@ -1,267 +1,280 @@
 <!--pages/my/index.wxml-->
-<view class="container">
+<block wx:if="{{!changeLabel}}">
+  <view  class="container">
+        <view class='tapbar'>
 
-
-
-
-      <view class='tapbar'>
-
-        <view class=' h-180 cell border-bottom'>
-          <view class='left'>
-            <view class="user-info">
-              
-              <view class='user-avatar'>
-                <image bindtap="uploadTap" src="{{avatar}}"></image>
+          <view class=' h-180 cell border-bottom'  bindtap="uploadTap" >
+            <view class='left'>
+              <view class="user-info">
+                <view class='user-avatar'>
+                  <image src="{{avatar}}"></image>
+                </view>
               </view>
+            </view> 
 
-            </view>
-          </view> 
-
-          <view class='go'>
-            <view>
-              <text class='num'>修改头像</text> 
-              <text class='arrow'> ></text> 
-            </view>  
-          </view> 
+            <view class='go'>
+              <view>
+                <text class='num'>修改头像</text> 
+                <text class='arrow'> ></text> 
+              </view>  
+            </view> 
           
-        
+          </view>
+
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>用户名</text>        
+            </view> 
+            <view class='go'>
+              <view >
+                <input disabled class = "one-line-dot" value='{{userName}}'></input>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>昵称</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <input  maxlength='30' type="text" bindchange="checkUserName"  class = "one-line-dot" value='{{nickName}}'></input>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>性别</text>        
+            </view>        
+            <view class='go' bindtap='changeGender'>
+              <view>
+                <text class='num'>{{gender}}</text> 
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>生日</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker mode="date" value="{{birthday}}" start="1950-09-01" bindchange="bindDateChange">
+                  <view class="picker">
+                    {{birthday}}，{{constellation}}座
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>身高</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "heigh" bindchange="bindRegionChange" value="{{heighindex}}" range="{{heightarray}}">
+                  <view class="picker">
+                    {{heigh==0?"未选择":heigh+"cm"}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>体重</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "weight" bindchange="bindRegionChange" value="{{weightindex}}" range="{{weightarray}}">
+                  <view class="picker">
+                    {{weigh==0?"未选择":weigh+"Kg"}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>血型</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "blood" bindchange="bindRegionChange" value="{{bloodindex}}" range="{{bloodarray}}">
+                  <view class="picker">
+                    {{bloodarray[bloodindex]}}
+                  </view>
+                </picker> 
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>学历</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "education" bindchange="bindRegionChange" value="{{educationindex}}" range="{{educationarray}}">
+                  <view class="picker">
+                    {{educationarray[educationindex]}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>现居地</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "place" bindchange="bindRegionChange" value="{{placeindex}}" range="{{placearray}}">
+                  <view class="picker">
+                    {{placearray[placeindex]}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
         </view>
 
+        <view class='tapbar'>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>职业</text>        
+            </view> 
+            <view class='go'>
+              <view>
+                <picker id = "occupation" bindchange="bindRegionChange" value="{{occupationindex}}" range="{{occupationarray}}">
+                  <view class="picker">
+                    {{occupationarray[occupationindex]}}
+                  </view>
+                </picker> 
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>月收入</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "income" bindchange="bindRegionChange" value="{{incomeindex}}" range="{{incomearray}}">
+                  <view class="picker">
+                    {{incomearray[incomeindex]}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>购房情况</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "house" bindchange="bindRegionChange" value="{{houseindex}}" range="{{housearray}}">
+                  <view class="picker">
+                    {{housearray[houseindex]}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>购车情况</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "car" bindchange="bindRegionChange" value="{{carindex}}" range="{{cararray}}">
+                  <view class="picker">
+                    {{cararray[carindex]}}
+                  </view>
+                </picker> 
+                <text class='arrow'> ></text> 
+              </view>  
+            </view>  
+          </view>
+        </view>
 
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>用户名</text>        
-          </view> 
-          <view class='go'>
-            <view >
-              <input disabled class = "one-line-dot" value='{{userName}}'></input>
-              <text class='arrow'> ></text> 
+        <view class='tapbar'>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>情感状态</text>        
+            </view> 
+            <view class='go'>
+              <view>
+                <picker id = "marital" bindchange="bindRegionChange" value="{{maritalindex}}" range="{{maritalarray}}">
+                  <view class="picker">
+                    {{maritalarray[maritalindex]}}
+                  </view>
+                </picker>
+                <text class='arrow'> ></text> 
+              </view>  
             </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>昵称</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <input class = "one-line-dot" value='{{nickName}}'></input>
-              <text class='arrow'> ></text> 
+          </view>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>有无子女</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <picker id = "baby"  bindchange="bindRegionChange" value="{{babyindex}}" range="{{babyarray}}">
+                  <view class="picker">
+                    {{babyarray[babyindex]}}
+                  </view>
+                </picker> 
+                <text class='arrow'> ></text> 
+              </view>  
             </view>  
-          </view>  
+          </view>
         </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>性别</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <text class='num'>{{userInfo.followMeCount}}</text> 
-              <text class='arrow'> ></text> 
+
+        <view class='tapbar'>
+          <view class='h-90 cell border-bottom'>
+            <view class='left'>
+            <text>个性标签</text>        
+            </view> 
+            <view class='go' bindtap='goChoiceLabel'>
+              <view>
+                <input disabled class = "one-line-dot" value='{{userlabelStr}}'></input>
+                <text class='arrow'> ></text> 
+              </view>  
             </view>  
-          </view>  
+          </view>
         </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>生日</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker mode="date" value="2010-01-01" start="1950-09-01" bindchange="bindDateChange">
-                <view class="picker">
-                  {{birthday}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
+
+        <view class='bottom'></view>
+        <view class="btn-area">
+          <button bindtap='saveUserInfo' > 保存 </button>
         </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>身高</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "heigh" bindchange="bindRegionChange" value="{{heighindex}}" range="{{heightarray}}">
-                <view class="picker">
-                  {{heightarray[heighindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>体重</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "weight" bindchange="bindRegionChange" value="{{weightindex}}" range="{{weightarray}}">
-                <view class="picker">
-                  {{weightarray[weightindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>血型</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "blood" bindchange="bindRegionChange" value="{{bloodindex}}" range="{{bloodarray}}">
-                <view class="picker">
-                  {{bloodarray[bloodindex]}}
-                </view>
-              </picker> 
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>学历</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "education" bindchange="bindRegionChange" value="{{educationindex}}" range="{{educationarray}}">
-                <view class="picker">
-                  {{educationarray[educationindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>现居地</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "place" bindchange="bindRegionChange" value="{{placeindex}}" range="{{placearray}}">
-                <view class="picker">
-                  {{placearray[placeindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
+  </view>
+</block>
+<block wx:else>
+  <view class='label-containar'>
+    <view class='label-header'>选择你的标签，展示真实的自己</view>
+    <view class='label-type' wx:for="{{labelGroup}}" wx:for-index="gid" wx:key="{{}}" wx:for-item="label">
+      <view  class='label-type-text'>
+        <text>#{{label.name}}<text class='label-num'>{{label.cnt}}/3</text></text>
       </view>
-
-      <view class='tapbar'>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>职业</text>        
-          </view> 
-          <view class='go'>
-            <view>
-              <picker id = "occupation" bindchange="bindRegionChange" value="{{occupationindex}}" range="{{occupationarray}}">
-                <view class="picker">
-                  {{occupationarray[occupationindex]}}
-                </view>
-              </picker> 
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>月收入</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "income" bindchange="bindRegionChange" value="{{incomeindex}}" range="{{incomearray}}">
-                <view class="picker">
-                  {{incomearray[incomeindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>购房情况</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "house" bindchange="bindRegionChange" value="{{houseindex}}" range="{{housearray}}">
-                <view class="picker">
-                  {{housearray[houseindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>购车情况</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "car" bindchange="bindRegionChange" value="{{carindex}}" range="{{cararray}}">
-                <view class="picker">
-                  {{cararray[carindex]}}
-                </view>
-              </picker> 
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-      </view>
-
-      <view class='tapbar'>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>情感状态</text>        
-          </view> 
-          <view class='go'>
-            <view>
-              <picker id = "marital" bindchange="bindRegionChange" value="{{maritalindex}}" range="{{maritalarray}}">
-                <view class="picker">
-                  {{maritalarray[maritalindex]}}
-                </view>
-              </picker>
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>有无子女</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <picker id = "baby"  bindchange="bindRegionChange" value="{{babyindex}}" range="{{babyarray}}">
-                <view class="picker">
-                  {{babyarray[babyindex]}}
-                </view>
-              </picker> 
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-      </view>
-
-      <view class='tapbar'>
-        <view class='h-90 cell border-bottom'>
-          <view class='left'>
-           <text>个性标签</text>        
-          </view> 
-          <view class='go'>
-            <view>
-              <text class='num'>{{userInfo.myFolloweCount}}</text> 
-              <text class='arrow'> ></text> 
-            </view>  
-          </view>  
-        </view>
-      </view>
-
-      <view class='bottom'></view>
-</view>
+      <block wx:for="{{label.label}}" wx:for-index="lid"  wx:key="{{item.id}}">
+         <text class="label  {{item.sta? 'bg-blue': 'bg-gyay'}}" data-name="{{item.name}}" data-lid="{{lid}}" data-groudid="{{gid}}" data-id="{{item.id}}" bindtap='labelToggle'>{{item.name}}</text> 
+      </block>
+    </view>
+  </view>
+  <view class="btn-area">
+    <button bindtap='goUserInfo' > 选择 </button>
+  </view>
+</block>

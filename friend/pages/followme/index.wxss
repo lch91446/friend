@@ -1,0 +1,69 @@
+/* pages/my/index.wxss */
+.tapbar{
+  margin-top: 20rpx;
+	background-color: #fff;
+	padding-left: 30rpx;
+  clear: both
+}
+.h-180{
+  height: 180rpx;
+}
+
+.user-info{
+	background-color: #fff;
+  height: 180rpx;
+}
+.user-info image{
+	display: block;
+	width: 130rpx;
+	height: 130rpx;
+	border-radius: 50%;
+	box-shadow: 0 0 20rpx rgba(0,0,0,.2)
+}
+.user-info .user-avatar{
+  width: 130rpx;
+  height: 180rpx;
+  float: left;
+  left: 30rpx;
+  display: flex;
+  display: -webkit-flex;
+  justify-content:center;
+  align-items:center;
+}
+.cell{
+  display: flex;
+  display: -webkit-flex;
+  align-items:center;
+  flex-direction: row;
+  font-size: 16px;
+  color: #000;
+}
+.cell .left{
+  width: 50%;
+}
+.cell .go{
+  width: 500rpx;
+  display: flex;
+  display: -webkit-flex;
+  justify-content:center;
+  flex-direction: column;
+  padding-right: 30rpx;
+  color: #cccccc;
+  text-align:right;
+
+}
+.cell .go .num{color: #cccccc}
+.arrow{
+  display: inline-block;
+  transform:scaleY(1.5);
+  padding-left: 10rpx;
+ 
+}
+
+
+.blue{
+  color: #0092ff
+}
+.border-bottom{
+  border-bottom:1px solid #f5f5f5;
+}

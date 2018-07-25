@@ -102,7 +102,7 @@ Page({
           let data = (JSON.parse(res.data))
           console.log(data)
 
-          if (data.code) {
+          if (data.code == "1") {
             wx.setStorageSync("userinfo", data.data.userinfo)
             wx.showModal({
               title: '提示',
@@ -116,7 +116,16 @@ Page({
                
               }
             })
-          } else {
+          } else if (data.code == "401") {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: data.msg,
+              success: (res) => {
+                this.redirectToLogin();
+              }
+            })
+          }else {
             wx.showModal({
               title: '提示',
               showCancel: false,
@@ -158,5 +167,10 @@ Page({
         })
       }
     })
-  }
+  }, 
+  redirectToLogin: function () {
+    wx.redirectTo({
+      url: '../login/index'
+    })
+  },
 })

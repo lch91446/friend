@@ -3,7 +3,7 @@
 		<swiper class="wux-gallery__swiper" current="{{ current }}" bindchange="{{ bindchange }}" hidden="{{ !urls.length }}">
 			<block wx:for="{{ urls }}" wx:key="{{ item }}">
 				<swiper-item class="wux-gallery__item">
-					<image  class="wux-gallery__img" mode="aspectFit" bindtap="{{ hide }}" src="{{ item }}"></image>
+					<image  class="wux-gallery__img" mode="aspectFit" bindtap="{{ hide }}" src="{{ item.image }}"></image>
 				</swiper-item>
 			</block>
 		</swiper>

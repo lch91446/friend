@@ -6,6 +6,10 @@
   clear: both
 }
 
+.navigator-hover{
+  background: #fff
+}
+
 .user-info{
 	background-color: #fff;
   height: 250rpx;
@@ -19,13 +23,13 @@
 	box-shadow: 0 0 20rpx rgba(0,0,0,.2)
 }
 .user-info .user-avatar{
-  width: 200rpx;
+  width: 190rpx;
   height: 250rpx;
   float: left;
   left: 30rpx;
   display: flex;
   display: -webkit-flex;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
 }
 

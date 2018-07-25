@@ -16,7 +16,12 @@
 	margin: 40rpx auto 30rpx;
 	text-align: center;
 }
-.bottom{
-  background-color: #f2f2f2;
-  height: 30rpx;
+
+
+.btn-area{
+
+}
+.btn-area button{
+  background: #0092ff;
+  color: #fff
 }

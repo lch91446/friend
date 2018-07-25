@@ -1,8 +1,10 @@
 {
   "pages": [
-
-    "pages/basicinfo/index",
+    
+    "pages/followme/index",
     "pages/my/index",
+    "pages/basicinfo/index",
+    "pages/myalbum/index",
     "pages/article/index",
     "pages/articleList/index",
 

@@ -1,0 +1,44 @@
+<!--pages/my/index.wxml-->
+
+<view  class="container">
+    <view class='tapbar'>
+
+      <view class=' h-180 cell border-bottom'  bindtap="uploadTap" >
+        <view class='left'>
+          <view class="user-info">
+            <view class='user-avatar'>
+              <image src="{{avatar}}"></image>
+            </view>
+          </view>
+        </view> 
+
+        <view class='go'>
+          <view>
+            <text class='num'>修改头像</text> 
+            <text class='arrow'> ></text> 
+          </view>  
+        </view> 
+      
+      </view>
+      <view class=' h-180 cell border-bottom'  bindtap="uploadTap" >
+        <view class='left'>
+          <view class="user-info">
+            <view class='user-avatar'>
+              <image src="{{avatar}}"></image>
+            </view>
+          </view>
+        </view> 
+
+        <view class='go'>
+          <view>
+            <text class='num'>修改头像</text> 
+            <text class='arrow'> ></text> 
+          </view>  
+        </view> 
+      
+      </view>
+     
+    </view>
+
+</view>
+

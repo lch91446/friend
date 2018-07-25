@@ -31,7 +31,7 @@ export default {
     			/**
     			 * 隐藏
     			 */
-	    		hide() {
+	    	hide() {
 					if (this.removed) return !1
 					this.removed = !0
 					this.setHidden(`wux-animate--slide-out-right`)
@@ -58,6 +58,7 @@ export default {
 				 * current 改变时会触发 change 事件
 				 */
 				bindchange(e) {
+          
 					this.setData({
 						[`$wux.gallery.current`]: e.detail.current, 
 					})

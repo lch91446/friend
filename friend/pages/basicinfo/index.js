@@ -1,11 +1,14 @@
 var app = getApp();
+var util = require("../../utils/util.js");
 Page({
   data:{
     // 用户信息
     birthday: "未选择",
+    constellation: "",
     avatar: "",
     nickName: "",
     userName: "",
+    gender: "",
     heightarray:[
       140, 141, 142, 143, 144, 145, 146, 147, 148, 149,
       150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
@@ -14,6 +17,7 @@ Page({
       180, 181, 182, 183, 184, 185, 186, 187, 188, 189,
       190, 191, 192, 193, 194, 195, 196, 197, 198, 199       
     ],
+    heigh: "",
     heighindex: 0,
     weightarray: [
       30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
@@ -23,6 +27,7 @@ Page({
       70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
       80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
     ],
+    weigh: "",
     weightindex: 0,
     bloodarray: [
       "未选择", "A型", "B型", "AB型", "O型", "其他",
@@ -39,7 +44,7 @@ Page({
     ],
     placeindex: 0,
     occupationarray: [
-      "未选择", "公务员", "事业单位", "国企", "企业职员", "由职业", "个体户", "其他"
+      "未选择", "公务员", "事业单位", "国企", "企业职员", "自由职业", "个体户", "其他"
     ],
     occupationindex: 0,
     incomearray: [
@@ -63,39 +68,29 @@ Page({
       "未选择", "没有", "有且归我抚养", "有不归我抚养"
     ],
     babyindex: 0,
+    userlabelStr: "",
     token: "",
+    changeLabel: false,
+    labelGroup: [],
+    selectLabel: [],
+    userlabelStrArr: [],
+    changeFieldArr: [],
+    birthdaychange: 0,
+    heightchange: 0,
+    incomechange: 0,
+    educationchange: 0,
+    
+
   },
 // 页面加载
   onLoad:function(){
-    wx.getStorage({
-      key: 'token',
-      success: (res) => {
-        this.setData({
-          token: res.data
-        })
-        console.log(this.data.token);
-      },
-      fail: (res) => {
-        console.log("login in")
-        // 页面初始化 options为页面跳转所带来的参数
-        wx.showModal({
-          title: '提示',
-          showCancel: false,
-          content: "未登录",
-          success: ()=>{
-            this.redirectToLogin()
-          }
-        })
-        
-      }
-    })
 
     this.setData({
       token: app.jamasTool.getUserToken()
     })
 
     let params3 = {
-      url: 'Operate/getMyFansCount',
+      url: 'Operate/getUserInfo',
       header: {
         'Content-Type': 'application/json',
         'token': this.data.token
@@ -108,13 +103,50 @@ Page({
         if (rel.data.code == "1") {
           wx.setStorageSync("userinfo", rel.data.data.userinfo)
           this.setData({
-          
               avatar: rel.data.data.userinfo.avatar,
               nickName: rel.data.data.userinfo.nickname,
               userName: rel.data.data.userinfo.username,
-        
+              gender: rel.data.data.userinfo.gender == "male" ? "男" : "女",
+              birthday: rel.data.data.userinfo.birthday,
+              birthdaychange: rel.data.data.userinfo.birthdaychange,
+              constellation: this.getAstro(rel.data.data.userinfo.birthday)
           })
-          console.log(this.data);
+     
+
+          if (rel.data.data.userinfo.userinfo){
+            this.setData({
+              heighindex: this.data.heightarray.indexOf(parseInt(rel.data.data.userinfo.userinfo.height)),
+              heigh: rel.data.data.userinfo.userinfo.height,
+              weightindex: this.data.weightarray.indexOf(parseInt(rel.data.data.userinfo.userinfo.weight)),
+              weigh: rel.data.data.userinfo.userinfo.weight,
+              bloodindex: rel.data.data.userinfo.userinfo.bloodtype,
+              educationindex: rel.data.data.userinfo.userinfo.education,
+              placeindex: rel.data.data.userinfo.userinfo.nativeplace,
+              occupationindex: rel.data.data.userinfo.userinfo.occupation,
+              incomeindex: rel.data.data.userinfo.userinfo.income,
+              carindex: rel.data.data.userinfo.userinfo.hascar,
+              houseindex: rel.data.data.userinfo.userinfo.hashouse,
+              maritalindex: rel.data.data.userinfo.userinfo.maritalStatus,
+              babyindex: rel.data.data.userinfo.userinfo.hasbaby,
+              heightchange: rel.data.data.userinfo.userinfo.heightchange,
+              incomechange: rel.data.data.userinfo.userinfo.incomechange,
+              educationchange: rel.data.data.userinfo.userinfo.educationchange
+            })
+          }
+          if (rel.data.data.userinfo.userlabelStr) {
+            this.setData({
+              userlabelStr: rel.data.data.userinfo.userlabelStr.join('、'),
+              userlabelStrArr: rel.data.data.userinfo.userlabelStr
+            })
+          }
+          if (rel.data.data.userinfo.userlabelArr) {
+            this.setData({
+              selectLabel: rel.data.data.userinfo.userlabelArr
+            })
+          } 
+          this.setData({
+            labelGroup: rel.data.data.LabelGroup
+          })
         } else if (rel.data.code == "401"){
           wx.showModal({
             title: '提示',
@@ -138,69 +170,147 @@ Page({
   onShow: function(){
     console.log("onShow");
   },
-  bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  goChoiceLabel: function(){
     this.setData({
-       birthday: e.detail.value
-  
-      
+      changeLabel: true
     })
   },
+  goUserInfo: function(){
+    let changeFieldArr = this.data.changeFieldArr
+    this.addToArr(changeFieldArr, "label_ids")
+    this.setData({
+      changeLabel: false,
+      changeFieldArr: changeFieldArr
+    }) 
+  },
+  bindDateChange: function (e) {
+    
+    //生日只能修改一次
+    if (this.data.birthdaychange > 0){
+      wx.showModal({
+        title: app.globalData.message1,
+        showCancel: false
+      })
+      return
+    }
+    let changeFieldArr = this.data.changeFieldArr
+    this.addToArr(changeFieldArr, "birthday")
+
+    this.setData({
+       birthday: e.detail.value,
+       constellation: this.getAstro(e.detail.value),
+       changeFieldArr: changeFieldArr
+    })
+    console.log(this.data.changeFieldArr)
+  },
   bindRegionChange: function (e) {
+    let changeFieldArr = this.data.changeFieldArr
     switch (e.target.id){
-      case "heigh": console.log("heigh");
+      case "heigh":  
+        //身高只能修改一次
+        if (this.data.heightchange > 0) {
+          wx.showModal({
+            title: app.globalData.message1,
+            showCancel: false
+          })
+          return
+        }
+
+        this.addToArr(changeFieldArr, "height")
         this.setData({
-          heighindex: e.detail.value
+          heighindex: e.detail.value,
+          heigh: this.data.heightarray[parseInt(e.detail.value)],
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "weight": console.log("weight"); 
+      case "weight": 
+       
+        this.addToArr(changeFieldArr, "weight")
         this.setData({
-          weightindex: e.detail.value
+          weightindex: e.detail.value,
+          weigh: this.data.weightarray[parseInt(e.detail.value)],
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "blood": console.log("blood");
+      case "blood": 
+        this.addToArr(changeFieldArr, "bloodtype")
         this.setData({
-          bloodindex: e.detail.value
+          bloodindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "education": console.log("education");
+      case "education":  
+        //学历只能修改3次
+        if (this.data.educationchange > 2) {
+          wx.showModal({
+            title: app.globalData.message1,
+            showCancel: false
+          })
+          return
+        }
+ 
+        this.addToArr(changeFieldArr, "education")
         this.setData({
-          educationindex: e.detail.value
+          educationindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })      
       break;
-      case "place": ; console.log("place");
+      case "place": ; 
+
+        this.addToArr(changeFieldArr, "nativeplace")
         this.setData({
-          placeindex: e.detail.value
+          placeindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "occupation": console.log("occupation"); 
+      case "occupation": 
+        this.addToArr(changeFieldArr, "occupation")
         this.setData({
-          occupationindex: e.detail.value
+          occupationindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })     
       break;
-      case "income": console.log("income");
+      case "income":
+        //收入只能修改10次
+        if (this.data.incomechange > 9) {
+          wx.showModal({
+            title: app.globalData.message1,
+            showCancel: false
+          })
+          return
+        }
+        this.addToArr(changeFieldArr, "income")
         this.setData({
-          incomeindex: e.detail.value
+          incomeindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "house": console.log("house");
+      case "house": 
+        this.addToArr(changeFieldArr, "hashouse")
         this.setData({
-          houseindex: e.detail.value
+          houseindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "car": console.log("car"); 
+      case "car": 
+        this.addToArr(changeFieldArr, "hascar")
         this.setData({
-          carindex: e.detail.value
+          carindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "marital": console.log("marital"); 
+      case "marital": 
+        this.addToArr(changeFieldArr, "maritalStatus")
         this.setData({
-          maritalindex: e.detail.value
+          maritalindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
-      case "baby": console.log("baby"); 
+      case "baby": 
+        this.addToArr(changeFieldArr, "hasbaby")
         this.setData({
-          babyindex: e.detail.value
+          babyindex: e.detail.value,
+          changeFieldArr: changeFieldArr
         })
       break;
     }
@@ -226,6 +336,60 @@ Page({
       }
     })
   },
+  labelToggle: function(e){
+    let id = e.target.dataset.id
+    let groudid = e.target.dataset.groudid
+    let lid = e.target.dataset.lid
+    let name = e.target.dataset.name
+    let labelGroup = this.data.labelGroup
+    let selectLabel = this.data.selectLabel
+    let userlabelStrArr = this.data.userlabelStrArr
+
+    labelGroup[groudid]["label"][lid]["sta"] = !labelGroup[groudid]["label"][lid]["sta"]
+    if (labelGroup[groudid]["label"][lid]["sta"]){
+      selectLabel.push(String(id))
+      userlabelStrArr.push(name)
+      labelGroup[groudid]["cnt"]++
+      if (labelGroup[groudid]["cnt"]>3){
+        labelGroup[groudid]["cnt"] = 3
+        labelGroup[groudid]["label"][lid]["sta"] = !labelGroup[groudid]["label"][lid]["sta"]
+        wx.showToast({
+          title: '每项最多选择3个标签',
+          icon: 'none'
+        })
+        return
+      }
+    }else{
+      this.arrRmove(selectLabel, String(id))
+      this.arrRmove(userlabelStrArr, name)
+      labelGroup[groudid]["cnt"]--
+    }
+    
+    this.setData({
+      labelGroup: labelGroup,
+      selectLabel: selectLabel,
+      userlabelStrArr: userlabelStrArr,
+      userlabelStr: userlabelStrArr.join("、")
+    })
+
+
+  },
+  addToArr(arr, elem) {
+    if (Array.isArray(arr)) {
+      let index = arr.indexOf(elem);
+      if (index == -1) {
+        arr.push(elem);
+      }
+    }
+  },
+  arrRmove(arr, elem){
+    if (Array.isArray(arr)){
+      let index = arr.indexOf(elem);
+      if (index > -1) {
+        arr.splice(index, 1);
+      }
+    }
+  },
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
       console.log(ops.target)
@@ -240,6 +404,150 @@ Page({
         console.log("转发失败:" + JSON.stringify(res));
       }
     }
+  },
+  changeGender(){
+    wx.showModal({
+      title: app.globalData.message1,
+      showCancel: false
+    })
+  },
+  getAstro(data){ 
+    let dataArr = data.split("-");
+    let m = dataArr[1]
+    let d = dataArr[2]
+    return "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯".substr(m * 2 - (d < "102223444433".charAt(m - 1) - -19) * 2, 2);
+  },
+  checkUserName(e) {
+    let nickName = e.detail.value
+    var userName = util.regexConfig().userName;
+    if (userName.test(nickName)) {
+      let changeFieldArr = this.data.changeFieldArr
+      this.addToArr(changeFieldArr, "nickname")
+      this.setData({
+        nickName: nickName,
+        changeFieldArr: changeFieldArr
+      })
+      return true;
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '昵称只能是3-12位中文、数字和英文，不能包含特殊字符'
+      });
+      return false;
+    }
+  },
+  saveUserInfo(){
+    wx.showLoading({
+      title: '请等待',
+    })
+
+    let formData =  {
+      'nickname': this.data.nickName,
+      'birthday': this.data.birthday,
+      'height': this.data.heigh,
+      'weight': this.data.weigh,
+      'bloodtype': this.data.bloodindex,
+      'education': this.data.educationindex,
+      'nativeplace': this.data.placeindex,
+      'occupation': this.data.occupationindex,
+      'income': this.data.incomeindex,
+      'hashouse': this.data.houseindex,
+      'hascar': this.data.carindex,
+      'maritalStatus': this.data.maritalindex,
+      'hasbaby': this.data.babyindex,
+      'label_ids': this.data.selectLabel.join(','),
+      'changeFieldArr': this.data.changeFieldArr.join(',')
+    }
+   
+    if (this.data.avatar.indexOf("haining") > 0){
+      let params = {
+        url: 'user/profile',
+        header: {
+          'Content-Type': 'application/json',
+          'token': this.data.token
+        },
+        method: 'post',
+        data: formData,
+        success: (rel) => {
+          console.log(rel)
+
+          if (rel.data.code) {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: rel.data.msg
+            })
+          } else if (rel.data.code == "401") {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: rel.data.msg,
+              success: (res) => {
+                this.redirectToLogin();
+              }
+            })
+          }else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: rel.data.msg
+            })
+           
+          }
+          wx.hideLoading()
+        },
+
+      }
+      app.jamasTool.request(params);
+    }else{
+
+      console.log(this.data.avatar)
+
+      wx.uploadFile({
+        url: app.jamasTool.globalConfig.baseRequestUrl + "user/profile",
+        filePath: this.data.avatar,
+        name: 'file',
+        header: {
+          'token': this.data.token
+        },
+        formData: formData,
+        success: (res) => {
+          let data = (JSON.parse(res.data))
+          console.log(data)
+
+          if (data.code == "1") {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: data.msg
+            })
+          } else if (data.code == "401") {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: data.msg,
+              success: (res) => {
+                this.redirectToLogin();
+              }
+            })
+          } else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: data.msg
+            })
+          }
+          wx.hideLoading()
+        },
+        fail: (res) => {
+          console.log(res)
+        },
+      })
+    }
+
+
+
   },
   redirectToLogin: function () {
     wx.redirectTo({
