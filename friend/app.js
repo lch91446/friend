@@ -31,9 +31,15 @@ App({
           params.success && params.success(res);
         },
         fail: function(err){
+          wx.showModal({
+            title: '警告',
+            content: '系统异常，请稍候再试',
+          })
+
           params.fail && params.fail(err);
         },
         complete: function () {
+          params.complete && params.complete();
           if (params.needLoadingIndicator) {
             wx.hideLoading();
           }

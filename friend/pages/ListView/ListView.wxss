@@ -1,6 +1,7 @@
 /**index.wxss**/
 @import '../../utils/refreshView.wxss';
 @import '../../utils/wux-components/wux.wxss'; 
+@import '../../utils/font.wxss';
 .item-style{  
   padding: 30rpx;  
   font-size: 40rpx;  
@@ -98,69 +99,75 @@
 .show_swiper_list {
   height: 326rpx;
 }
-.swiper_item {
-  float: left; 
-}
-/* .swiper_item:nth-child(odd){
-  background-color: lightblue;
-  
-}
-.swiper_item:nth-child(even){
-  background-color: lightgreen;
-} */
-
-image{
+.swiper_item {float: left;}
+.show_swiper image{
   width: 100%;
   border-radius: 15rpx;
   height:326rpx;
-  /* box-shadow: 5rpx 5rpx 15rpx 5rpx #666 */
 }
-
-
+.waterfall image{
+  width: 100%;
+  border-radius: 15rpx 15rpx 0rpx 0rpx;
+}
 .nav{
-  display: -webkit-flex; /* Safari */
+  display: -webkit-flex; 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30rpx;
+  margin: 55rpx 30rpx;
 }
 .nav .nav-item{
-  display: -webkit-flex; /* Safari */
+  display: -webkit-flex; 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  background: #e64340;
-  margin: 10rpx;
-  height: 100rpx;
+  flex: 1;
+  font-size: 22rpx;
 }
-
+.nav .nav-item image{
+  width: 70rpx;
+  height: 63rpx;
+}
+.nav .nav-item text{padding-top: 20rpx;}
 .waterfall{
-  margin: 30rpx 30rpx 0 30rpx;
+  margin: 0rpx 30rpx 0rpx 30rpx;
   box-sizing: border-box;
 }
 .waterfall .view {
-  width: 48%;
+  width: 335rpx;
   display: inline-block;
   vertical-align: top;
 }
-.waterfall .view view{
-   margin-bottom: 15rpx; 
 
-}
 .waterfall text{
-  text-align: center;
   width: 100%;
-  padding: 0 10rpx;
   box-sizing: border-box;
-  background-color: #fff;
-  height: 68rpx;
-  line-height: 68rpx;
-  display: inline-block;
-  font-size: 24rpx;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  color: #646464;
 }
+.identification{
+  position:absolute;
+  top:10rpx;
+  color:white;
+  left:10rpx;
+  font-size:12px;
+  padding:10rpx 30rpx;
+  background:rgba(0,0,0,0.3);
+  border-radius:30rpx;
+}
+.identification .icon{padding-right: 10rpx}
+.waterfall .userinfo{padding-bottom: 15rpx;position: relative}
+.waterfall view view{margin-bottom: 20rpx}
+.waterfall .gender .name{color: #000;font-size: 29rpx;}
+.waterfall .gender{
+  padding:4rpx 8rpx;
+  margin-top:10rpx;
+  border-radius:10rpx;
+  color: #fff;
+  font-size:24rpx;
+  width:70rpx;
+}
+.waterfall .male{background: #0092ff}
 

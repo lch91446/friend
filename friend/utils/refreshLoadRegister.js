@@ -95,7 +95,7 @@ function end(context,e) {
       refreshHeight: height,
       loading: true,
       pull: false,
-      refreshing_text: '正在刷新...'
+      refreshing_text: ''
     });
     context.refresh();
   } else if (context.data.loadMoreHeight > height) {
@@ -103,7 +103,7 @@ function end(context,e) {
       loadMoreHeight: height,
       loading: true,
       pull: false,
-      loading_text: '正在加载更多...'
+      loading_text: ''
     });
     context.loadMore();
   } else {
@@ -124,13 +124,13 @@ function loadFinish(context,success) {
   }
   if(success){
     context.setData({
-      refreshing_text: '刷新成功',
-      loading_text: '加载成功'
+      refreshing_text: '',
+      loading_text: ''
     });
   }else{
     context.setData({
-      refreshing_text: '刷新失败',
-      loading_text: '加载失败'
+      refreshing_text: '',
+      loading_text: ''
     });
   }
   setTimeout(function () {
@@ -163,12 +163,12 @@ function move(context,e) {
     if (context.data.refreshHeight > context.data.loadingHeight) {
       context.setData({
         pull: false,
-        refreshing_text: '释放立即刷新'
+        refreshing_text: ''
       })
     } else {
       context.setData({
         pull: true,
-        refreshing_text: '下拉刷新'
+        refreshing_text: ''
       })
     }
   } else if (context.data.isLower && moveY < 0) {//2上拉加载更多
@@ -179,7 +179,7 @@ function move(context,e) {
     if (context.data.loadMoreHeight > context.data.loadingHeight) {
       context.setData({
         pull: false,
-        loading_text: '释放加载更多'
+        loading_text: ''
       })
     } else {
       context.setData({

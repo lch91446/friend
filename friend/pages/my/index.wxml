@@ -51,39 +51,48 @@
           </view>
         </navigator>
 
-        <view class='cell border-bottom'>
-          <view class='left'>
-           <text>我的关注</text>        
-          </view> 
-          <view class='go'>
-            <view>
-              <text class='num'>{{userInfo.myFolloweCount}}</text> 
-              <text class='arrow'> ></text> 
+        <navigator url="/pages/followme/index" hover-class="navigator-hover">
+          <view class='cell border-bottom'>
+            <view class='left'>
+            <text>我的关注</text>        
+            </view> 
+            <view class='go'>
+              <view>
+                <text class='num'>{{userInfo.myFolloweCount}}</text> 
+                <text class='arrow'> ></text> 
+              </view>  
             </view>  
-          </view>  
-        </view>
-        <view class='cell border-bottom'>
-          <view class='left'>
-           <text>我的粉丝</text>        
-          </view>        
-          <view class='go'>
-            <view>
-              <text class='num'>{{userInfo.followMeCount}}</text> 
-              <text class='arrow'> ></text> 
+          </view>
+        </navigator>
+
+        <navigator url="/pages/myfans/index" hover-class="navigator-hover">  
+          <view class='cell border-bottom'>
+            <view class='left'>
+            <text>我的粉丝</text>        
+            </view>        
+            <view class='go'>
+              <view>
+                <text class='num'>{{userInfo.followMeCount}}</text> 
+                <text class='arrow'> ></text> 
+              </view>  
             </view>  
-          </view>  
-        </view>
-        <view class='cell border-bottom'>
-          <view class='left'>
-           <text>谁看过我</text>        
-          </view>          
-          <view class='go'>
-            <view>
-              <text class='num'>{{userInfo.seeMeCount}}</text> 
-              <text class='arrow'> ></text> 
+          </view>
+        </navigator> 
+
+        <navigator url="/pages/myvisitor/index" hover-class="navigator-hover">  
+          <view class='cell border-bottom'>
+            <view class='left'>
+            <text>谁看过我</text>        
+            </view>          
+            <view class='go'>
+              <view>
+                <text class='num'>{{userInfo.seeMeCount}}</text> 
+                <text class='arrow'> ></text> 
+              </view>  
             </view>  
-          </view>  
-        </view>
+          </view>
+        </navigator>
+          
         <view class='cell '>
           <view class='left'>
              <button class='share' id="shareBtn" open-type="share" hover-class="other-button-hover">

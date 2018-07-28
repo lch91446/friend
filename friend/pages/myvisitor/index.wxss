@@ -1,0 +1,5 @@
+@import '../../utils/font.wxss';
+@import '../../utils/refreshView.wxss';
+/* pages/my/index.wxss */
+.tapbar .right {flex:0 0 150rpx;color: #cccccc}
+.capsule {padding: 0rpx;}

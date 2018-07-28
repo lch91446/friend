@@ -44,9 +44,10 @@ Page({
   },
 
   redirectToList: function () {
-    wx.redirectTo({
+    wx.switchTab({
       url: '../ListView/ListView'
     })
+
   }
 
 })

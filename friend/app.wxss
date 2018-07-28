@@ -18,9 +18,7 @@
 }
 
 
-.btn-area{
-
-}
+.navigator-hover{background: #fff}
 .btn-area button{
   background: #0092ff;
   color: #fff

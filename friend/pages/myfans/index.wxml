@@ -39,12 +39,7 @@
             </view> 
 
             <view class='right border-bottom'>
-              <block wx:if="{{item.focus}}">
-                <text class='capsule focus' bindtap='focusCancle' data-index='{{index}}' data-id='{{item.id}}'>已关注</text>
-              </block>
-              <block wx:else>
-                <text class='capsule no-focus' bindtap='focus' data-index='{{index}}' data-id='{{item.id}}'>关注</text>
-              </block>
+
             </view>
 
           </view>

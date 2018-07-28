@@ -1,0 +1,133 @@
+
+@font-face {font-family: "iconfont";
+  src: url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWgAAsAAAAACBgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7khDY21hcAAAAYAAAABlAAABlM7fnzxnbHlmAAAB6AAAAboAAAHkqvcaTWhlYWQAAAOkAAAALgAAADYSHkgDaGhlYQAAA9QAAAAcAAAAJAfeA4VobXR4AAAD8AAAABAAAAAQD+kAAGxvY2EAAAQAAAAACgAAAAoBaAC0bWF4cAAABAwAAAAfAAAAIAETAF1uYW1lAAAELAAAAUUAAAJtPlT+fXBvc3QAAAV0AAAALAAAAD2B+oUOeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sU4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVDwLZ27438AQw9zA0AAUZgTJAQAqdwzFeJzFkMENgCAQBOcAeRhLMb6sRRJflkHFtKHLyccK3GTY7N4lEIAJiGIVCezC6DrVmveR2fvEppzlRqC2ct/KtR3uWtEsu0fNscxvsv+u/mrxcx+p/3Md6InteOl9Ky+EB/86D30AAAB4nD2PTWsTURSG7zm3MzepyaSZr5tMmq+ZZq5ajTgZZxAxXUQXfiwEW5pZFTfuLG2yKIHQxEWCCxcusy6Cv8BFoeoPcG33UsFf0dEbih4OL5z3eeHwEoWQPz/pGS0Rg1wnd8kj8oIQUDfB1bAKTRG2cROspmJxU6PCE03muW36ELirmnYQhT5XmVoADWrQaQaRaKOAe2EXH0BgVwHKFeel3lrX6QdYLYnaLH2KJ2DVvfVC93b65NaWGTSMzFFO18u6/j6jKkoGcaWgwRtuZ5Xsqpp+VAqOdVa/gXXIlYXzPMk3Kvqrd+F+tcWzANMpGJWG9mmr6BTljh3b0MtsLZ8pOXlvw4SjX9dKRq7qXxA5KLt+pyd4TiziypZWh7VBaMBqwLsQ+yK2OkWQljykJQEeDk+97TvDBaWL4WBBofbt4PKilyAmvV4fsd/DHwenlRpcYboYPL7/9RCCy9cS/Y/9+z1dIXRK7OXvVrQm/AZTkTPBOOMxj0Vsb0AUcNtkqiv8kM5Ho0n6ebJvJtG4P57tzqVGx3AzfZv8TnZ2lvJlAs8mo9EgPT9eZua7s2UmMXHviksh5C8KZmTEAAB4nGNgZGBgAOLGWAnOeH6brwzcLAwgcL2+iRlB/29gYWBuAHI5GJhAogDrjwh2AAB4nGNgZGBgbvjfwBDDwgACQJKRARWwAABHCgJtBAAAAAPpAAAEAAAABAAAAAAAAAAAdgC0APIAAHicY2BkYGBgYQhkYGUAASYg5gJCBob/YD4DABESAXEAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAhZGJkZmRhZGVgbGC2cjUhLMiMy89KTM1r4yBAQAwcgUN') format('woff');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xingbienan:before { content: "\e657"; }
+
+.icon-xingbienv:before { content: "\e656"; }
+
+
+.container {
+  background: #fff;
+}
+
+.tapbar{
+  margin-top: 20rpx;
+	background-color: #fff;
+	padding-left: 30rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex: 1;
+}
+.tapbar .left{
+  flex: 0 0 100rpx;
+  order: -1;
+}
+.tapbar .middle{
+  flex: 1;
+}
+.tapbar .middle .userinfo{
+  display: flex;
+  display: -webkit-flex;
+  align-items:center ;
+  font-size:38rpx; 
+}
+.female .iconfont {
+  padding-right:7rpx;
+  font-size:20rpx;
+}
+.male .iconfont {
+  padding-right:7rpx;
+  font-size:28rpx;
+}
+.tapbar .middle .userinfo .name{
+  font-size: 32rpx;
+  max-width: 330rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.female{
+  background: #ffb8d3;
+}
+.male{
+  background: #81d4fa;
+}
+.tapbar .middle .userinfo .gender{
+  display:flex;
+  align-items:center;
+  margin-left:10rpx;
+  padding:0rpx 8rpx;
+  border-radius:10rpx;
+  color: #fff;
+  font-size:26rpx;
+}
+.tapbar .right{
+  display: flex;
+  display: -webkit-flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:30rpx;
+  flex: 0 0 142rpx;
+}
+.white{
+  color: white;
+}
+.capsule{
+  padding: 8rpx 18rpx 8rpx 20rpx;
+  border-radius: 10rpx;
+  font-size:22rpx;
+  letter-spacing:3rpx;
+}
+.focus{
+  border: 1rpx solid #cccccc;
+  color: #cccccc;
+}
+.no-focus{
+  border: 1rpx solid #0092ff;
+  color: #0092ff;
+}
+
+.h-130{
+  height: 130rpx;
+}
+
+.user-info{
+	background-color: #fff;
+  height: 180rpx;
+}
+.user-info image{
+	display: block;
+	width: 130rpx;
+	height: 80rpx;
+	border-radius: 50%;
+	box-shadow: 0 0 20rpx rgba(0,0,0,.2)
+}
+.user-info .user-avatar{
+  width: 80rpx;
+  height: 130rpx;
+  float: left;
+  left: 30rpx;
+  display: flex;
+  display: -webkit-flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+
+
+.blue{
+  color: #0092ff
+}
+.border-bottom{
+  border-bottom:1px solid #f5f5f5;
+}

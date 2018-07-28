@@ -319,16 +319,11 @@ Page({
 
   },
   toDetailsTap: function (e) {
-    console.log(e.currentTarget)
     wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/user/index?userid=" + e.currentTarget.dataset.id
     })
   },
   doLoadData(params) {
-    wx.showLoading({
-      title: 'loading...',
-    });
-
     let params3 = {
       url: 'Operate/getIndexUserList',
       header: {
@@ -339,16 +334,13 @@ Page({
       data: params,
       needLoadingIndicator: true,
       success: (rel) => {
-        // console.log(rel)
         if (rel.data.code == "1") {
-          
           if (rel.data.data.list.length>0){
             this.data.query.page+=1;
             this.setData({
               query: this.data.query,
               goods: [...rel.data.data.list, ...this.data.goods]
             })
-            
           }
           else{
             this.setData({
@@ -362,12 +354,14 @@ Page({
             content: rel.data.msg
           })
         }
+      },
+      complete: ()=>{
+        register.loadFinish(this, true);
       }
     }
     app.jamasTool.request(params3);
 
-    wx.hideLoading();
-    register.loadFinish(this, true);
+    
 
   },
   //模拟刷新数据

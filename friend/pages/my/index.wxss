@@ -1,13 +1,14 @@
 /* pages/my/index.wxss */
+.container {
+  min-height:100vh;
+}
+
+
 .tapbar{
   margin-top: 20rpx;
 	background-color: #fff;
 	padding: 0 30rpx;
   clear: both
-}
-
-.navigator-hover{
-  background: #fff
 }
 
 .user-info{

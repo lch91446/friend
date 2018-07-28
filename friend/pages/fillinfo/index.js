@@ -87,6 +87,9 @@ Page({
         })
         return;
       }
+      wx.showLoading({
+        title: '请等待',
+      })
       wx.uploadFile({
         url: app.jamasTool.globalConfig.baseRequestUrl + "user/profileGBA",
         filePath: this.data.avatar,
@@ -135,6 +138,9 @@ Page({
         },
         fail: (res) => {
           console.log(res)
+        },
+        complete: ()=>{
+          wx.hideLoading()
         }
       })
     }else if (this.data.step < 2){

@@ -1,23 +1,24 @@
 {
   "pages": [
-    
-    "pages/followme/index",
+
+
+    "pages/user/index",  
+
+    "pages/ListView/ListView",
     "pages/my/index",
+    "pages/followme/index",
+    "pages/myfans/index",
+    "pages/index/index",
+    "pages/myvisitor/index",
+    
     "pages/basicinfo/index",
     "pages/myalbum/index",
     "pages/article/index",
     "pages/articleList/index",
-
-   
-    "pages/ListView/ListView",
     "pages/fillinfo/index",
     "pages/register/index",
-    
-    "pages/index/index",
-
-     
-     "pages/avatarUpload/upload/upload",
-     "pages/avatarUpload/getavater/upload",
+    "pages/avatarUpload/upload/upload",
+    "pages/avatarUpload/getavater/upload",
     "pages/login/index",
     "pages/activation/index"
   ],
@@ -30,7 +31,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/ListView/ListView",
         "iconPath": "images/nav/nav1.png",
         "selectedIconPath": "images/nav/nav11.png",
         "text": "发现"

@@ -1,0 +1,39 @@
+
+<view class='page'>
+  <text>{{userinfo.userid}}</text>
+  <view class='container user-area flex'>
+    <view class='avatar-container flex'>
+      <view class='item follow flex'><text class='num'>0</text><text>关注</text></view>
+      <view class='item avatar'><image src="http://img.haining.com.cn/friend/uploads/ba78ec9cc82852a7030fc9719200cc4e.png"></image></view>
+      <view class='item fans flex'><text class='num'>586</text><text>粉丝</text></view>
+    </view>
+    <view class='detail-container flex'>
+      <view class='name flex'><text>陶瓷TFboy</text><icon class='icon' type='success' size='14' color='#333333'></icon></view>
+      <view class='gender-birthday flex'>
+        <block wx:if="{{1}}">
+          <view class='item capsule gender male'>
+            <text class='iconfont  icon-xingbienan'></text>
+            <text>{{item.birthday_age?item.birthday_age:10}}</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='item capsule gender female'>
+            <text class='iconfont  icon-xingbienv'></text>
+            <text>{{item.birthday_age}}</text>
+          </view>
+        </block>
+        <view class='item capsule constellation'>
+          <view><text>射手座</text></view>
+        </view>
+      </view>
+      <view class='focus-btn'><text class='capsule'>+ 关注</text></view>
+    </view>
+  </view>
+
+  <view class='container album-area'></view>
+
+  <view class='container basic-area'></view>
+
+  <view class='container label-area'></view>
+
+</view>
