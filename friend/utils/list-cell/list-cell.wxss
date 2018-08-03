@@ -1,0 +1,170 @@
+.pic-listcell-view {
+    background-color: #fff;
+}
+
+.cell-item-view {
+    height: 140rpx;
+    position: relative;
+}
+
+.cell-item-view:last-child {
+    border: none;
+}
+
+.cell-item {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    z-index: 2;
+    background-color: #fff;
+}
+
+/* 左边 图片 */
+
+.left-pic-container {
+    position: relative;
+    height: 100rpx;
+}
+
+.left-pic-container .pic {
+    width: 100rpx;
+    height: 100rpx;
+    overflow: hidden;
+    border: 2rpx #ececec solid;
+    /* will-change: transform; 这里如果加willchange 会导致，抽屉回弹的时候，头像变成空白 */
+}
+
+.left-pic-container .radius-corner {
+    border-radius: 50%;
+}
+
+/* 中间 */
+
+.middle-des {
+vertical-align:center;
+flex-grow:1;
+margin-left:30rpx;
+white-space:nowrap;
+border-bottom:1px solid #f5f5f5;
+height:139rpx;
+display:flex;
+flex-direction:column;
+justify-content:center;
+width:420rpx;
+}
+
+.middle-des .title {
+  width: 420rpx;
+  font-weight:bold;
+  color:#000;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  font-size:28rpx;
+  text-overflow:ellipsis;
+  line-height:50rpx;
+  white-space: nowrap;
+}
+
+.normal-title {
+    font-weight: normal !important;
+}
+
+.middle-description {
+    display: flex;
+}
+
+.middle-description .description {
+    font-size: 24rpx;
+    color: #cccccc;
+    width: 420rpx;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 消息的右边 样式 */
+
+.right-view-message {
+    display:flex;
+    background-color: #fff;
+    flex-direction: column;
+    border-bottom:1px solid #f5f5f5;
+}
+
+.right-view-message .date {
+  color:#8c8282;
+  font-size:22rpx;
+  width:100%;
+  text-align:end;
+  height:70rpx;
+  display:flex;
+  align-items:flex-end;
+}
+
+.right-view-message .notice-view {
+    display: flex;
+    height:69rpx;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.notice-view .notice-item {
+    margin-left: 1.6vw;
+}
+
+.notice-view .icon-item {
+    width: 4.6vw;
+    height: 4.6vw;
+}
+
+.notice-view image {
+    width: 100%;
+    height: 100%;
+}
+
+/* 右侧 滑出的操作选项 */
+
+.cell-operate-items {
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+}
+
+.cell-operate-items .operate-item {
+    /* width: 200rpx; */
+    height: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+}
+
+.cell-operate-items .operate-item:first-child {
+    flex-grow: 1;
+}
+
+.gray {
+    background-color: #cccccc;
+}
+
+.red {
+    background-color: #ff5313;
+}
+
+/* 红点 */
+
+.newPoint {display:block;background:#ff5313;height:35rpx;width:35rpx;line-height:35rpx;text-align:center;font-size:20rpx;border-radius:35rpx;color:#fff;}

@@ -1,5 +1,6 @@
 <template name="gallery">
 	<view class="wux-gallery {{ animateCss }}" wx:if="{{ visible }}">
+    <view class='current-all'>{{ current+1 }}/{{ urls.length }}</view>
 		<swiper class="wux-gallery__swiper" current="{{ current }}" bindchange="{{ bindchange }}" hidden="{{ !urls.length }}">
 			<block wx:for="{{ urls }}" wx:key="{{ item }}">
 				<swiper-item class="wux-gallery__item">
@@ -7,10 +8,12 @@
 				</swiper-item>
 			</block>
 		</swiper>
-        <view class="wux-gallery__opr" bindtap="{{ delete }}">
-            <view class="wux-gallery__del">
-                <view class="wux-gallery__icon"></view>
-            </view>
-        </view>
+    <block wx:if="{{isdelete}}">
+      <view class="wux-gallery__opr" bindtap="{{ delete }}">
+          <view class="wux-gallery__del">
+              <view class="wux-gallery__icon"></view>
+          </view>
+      </view>
+    </block>
     </view>
 </template>

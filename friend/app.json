@@ -1,11 +1,14 @@
 {
   "pages": [
-
-
-    "pages/user/index",  
-
-    "pages/ListView/ListView",
+    
     "pages/my/index",
+    "pages/auth/index",
+    "pages/message/index",
+    "pages/messagelist/index",
+    "pages/set/index",
+    "pages/ListView/ListView",
+    "pages/user/index",  
+    "pages/chat/index",
     "pages/followme/index",
     "pages/myfans/index",
     "pages/index/index",
@@ -25,7 +28,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "red",
-    "navigationBarTitleText": "Test",
+    "navigationBarTitleText": "海论交友",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -37,7 +40,7 @@
         "text": "发现"
       },
       {
-        "pagePath": "pages/ListView/ListView",
+        "pagePath": "pages/message/index",
         "iconPath": "images/nav/nav2.png",
         "selectedIconPath": "images/nav/nav22.png",
         "text": "消息"

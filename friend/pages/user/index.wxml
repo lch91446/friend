@@ -1,39 +1,156 @@
+<import src="../../utils/wux-components/gallery/gallery.wxml" />
+<template is="gallery" data="{{ ...$wux.gallery }}"/>
 
 <view class='page'>
-  <text>{{userinfo.userid}}</text>
   <view class='container user-area flex'>
     <view class='avatar-container flex'>
-      <view class='item follow flex'><text class='num'>0</text><text>关注</text></view>
-      <view class='item avatar'><image src="http://img.haining.com.cn/friend/uploads/ba78ec9cc82852a7030fc9719200cc4e.png"></image></view>
-      <view class='item fans flex'><text class='num'>586</text><text>粉丝</text></view>
+      <view class='item follow flex'><text class='num'>{{userinfo.userFollowCount}}</text><text>关注</text></view>
+      <view class='item avatar'><image src="{{userinfo.avatar}}"></image></view>
+      <view class='item fans flex'><text class='num'>{{userinfo.followCount}}</text><text>粉丝</text></view>
     </view>
     <view class='detail-container flex'>
-      <view class='name flex'><text>陶瓷TFboy</text><icon class='icon' type='success' size='14' color='#333333'></icon></view>
+      <view class='name flex'><text>{{userinfo.nickname}}</text>
+        <icon wx:if="{{identification}}" class='icon' type='success' size='14' color='#333333'></icon>
+      </view>
       <view class='gender-birthday flex'>
-        <block wx:if="{{1}}">
+        <block wx:if="{{userinfo.gender=='male'}}">
           <view class='item capsule gender male'>
             <text class='iconfont  icon-xingbienan'></text>
-            <text>{{item.birthday_age?item.birthday_age:10}}</text>
+            <text>{{userinfo.age}}</text>
           </view>
         </block>
         <block wx:else>
           <view class='item capsule gender female'>
             <text class='iconfont  icon-xingbienv'></text>
-            <text>{{item.birthday_age}}</text>
+            <text>{{userinfo.age}}</text>
           </view>
         </block>
         <view class='item capsule constellation'>
-          <view><text>射手座</text></view>
+          <view><text>{{userinfo.constellation}}</text></view>
         </view>
       </view>
-      <view class='focus-btn'><text class='capsule'>+ 关注</text></view>
+      <view class='focus-btn'>
+        <block wx:if="{{userinfo.relationshop<2}}">
+          <text bindtap='focus' class='capsule'>+ 关注</text>
+        </block>
+        <block wx:else>
+          <text bindtap='focusCancle' class='capsule'>已关注</text>
+        </block>     
+      </view>
     </view>
   </view>
 
-  <view class='container album-area'></view>
+  <block wx:if="{{urls.length>0}}">
+    <view class='container pd-lr-30 album-area'>
+      <view class='title'>相册</view>
+      <view class='album'>
+        <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+          <view wx:if='{{index<6}}' class="album-item" bindtap="showGallery" data-current="{{ index }}">
+            <image class="album-item__img" src="{{ item.image }}" />
+          </view>
+        </block>
+        <view wx:if='{{urls.length>5}}' class="more flex" bindtap="showGallery" data-current=''>
+            <text>MORE</text>
+        </view>
+      </view>
+    </view>
+  </block>
 
-  <view class='container basic-area'></view>
+  <view class='container pd-lr-30 basic-area'>
+    <view class='title'>基本资料</view>
+    <view class='basic'>
+      <view class='flex bottom-border'>
+        <view class='item-a'>身高</view>
+        <view class='item-b'>{{userinfo.height}}cm</view>
+      </view>
+      <view class='flex bottom-border'>
+        <view class='item-a'>体重</view>
+        <view class='item-b'>{{userinfo.weight}}kg</view>
+      </view>
+        <view class='flex bottom-border'>
+        <view class='item-a'>血型</view>
+        <view class='item-b'>{{userinfo.bloodtype}}</view>
+      </view>
+      <view class='flex bottom-border'>
+        <view class='item-a'>学历</view>
+        <view class='item-b'>{{userinfo.education}}</view>
+      </view>
+      <view class='flex bottom-border'>
+        <view class='item-a'>月收入</view>
+        <view class='item-b'>{{userinfo.income}}</view>
+      </view>
+      <view class='flex bottom-border'>
+        <view class='item-a'>现居地</view>
+        <view class='item-b'>{{userinfo.nativeplace}}</view>
+      </view>
+      <view class='flex '>
+        <view class='item-a'>职业</view>
+        <view class='item-b'>{{userinfo.occupation}}</view>
+      </view>
+    </view>
+  </view>
 
-  <view class='container label-area'></view>
+  <view class='container pd-lr-30 secret-area'>
+    <view class='secret'>
+      <view class='flex bottom-border'>
+        <view class='item-a'>购车情况</view>
+        <view class='item-b'>
+          <text wx:if="{{userinfo.relationshop==2}}">{{userinfo.hascar}}</text>
+          <text wx:else>相互关注后可查看</text>
+        </view>
+      </view>
+      <view class='flex '>
+        <view class='item-a'>购房情况</view>
+        <view class='item-b'>
+          <text wx:if="{{userinfo.relationshop==2}}">{{userinfo.hashouse}}</text>
+          <text wx:else>相互关注后可查看</text>
+        </view>
+      </view>
+      <view class='flex '>
+        <view class='item-a'>情感状态</view>
+        <view class='item-b'>
+          <text wx:if="{{userinfo.relationshop==2}}">{{userinfo.maritalStatus}}</text>
+          <text wx:else>相互关注后可查看</text>
+        </view>
+      </view>
+      <view class='flex '>
+        <view class='item-a'>有无子女</view>
+        <view class='item-b'>
+          <text wx:if="{{userinfo.relationshop==2}}">{{userinfo.hasbaby}}</text>
+          <text wx:else>相互关注后可查看</text>
+        </view>
+      </view>
+    </view>
+  </view>
 
+  <view class='container pd-lr-30 label-area'>
+    <view class='label-type' wx:for="{{userinfo.labels}}" wx:key="index" wx:for-item="lableType">
+      <view class='title'>{{lableType.name}}</view>
+      <view class='label flex'>
+        <block wx:if="{{lableType.cnt==0}}">
+          <text class='noselect'>暂未选择</text>
+        </block>
+        <block wx:else>
+          <block wx:for="{{lableType.label}}" wx:key="index" >
+            <block wx:if="{{lableType.sta}}"><text class='capsule' >{{item.name}}</text>
+            </block>
+          </block>
+        </block>
+        
+      </view>
+    </view>
+  </view>
+
+  <view class='report-picker'>
+    <picker bindchange="bindRegionChange" value="{{index}}" range="{{report}}">
+      <view class="picker">
+         举报不良信息
+      </view>
+    </picker>
+
+  </view>
+
+</view>
+<view class='message-btn'>
+  <navigator hover-class="navigator-hover" url="/pages/chat/index?userid={{userinfo.userid}}"><button><text class='iconfont icon-qipao message'></text>私信</button></navigator>
 </view>

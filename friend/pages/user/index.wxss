@@ -1,11 +1,29 @@
 @import '../../utils/font.wxss';
-.page{background: #f5f5f5;min-height: 100vh}
+@import '../../utils/wux-components/wux.wxss'; 
+.page{background: #f5f5f5;min-height: 100vh;margin-bottom: 97rpx;}
 .container{
   flex-direction: column;
+  margin-bottom: 15rpx;
+  background: #fff;
+  background-color: #fff;
 }
+.bottom-border{border-bottom: 1px solid #f5f5f5}
+.container .title{
+  background-color: #fff;
+  padding:40rpx 0rpx 20rpx 0rpx;
+  font-size:30rpx;
+  font-weight: bold;
+}
+.message-btn{position: fixed;height: 95rpx;border-top: 1px solid #cccccc;bottom:0rpx;width:100%;z-index: 999;color: #666666;}
+.message-btn button{border-radius:0px;font-size: 26rpx;line-height: 95rpx;height: 100%;background: #fff;}
+
 .flex{
   display: flex;
   display: -webkit-flex;
+}
+.pd-lr-30{
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 
 .user-area .avatar-container{
@@ -33,6 +51,10 @@
 .item{
   flex: 1
 }
+.item-a{ 
+  width: 150rpx;
+}
+.item-b{width: 100%;}
 
 .avatar-container .avatar image{
 	display: inline-block;
@@ -71,3 +93,44 @@
   color:#fff;
   padding:15rpx 50rpx;
 }
+
+
+.album-area .album{padding-bottom: 20rpx;width:100%;overflow:hidden;position: relative }
+.album .more{position: absolute;bottom: 49rpx;right: 0rpx; justify-content: 
+center;align-items: center;height: 222rpx;width: 222rpx;background-color: rgba(0,0,0,.3);color: #fff}
+.album-area .album-item{
+  width:222rpx;
+  height:222rpx;
+  margin-right: 12rpx;
+  box-sizing:content-box;
+  display:inline-block;
+  overflow: hidden;
+}
+.album-area .album-item:nth-child(3n){margin-right: 0rpx;}
+.album-area .album-item image{height: 222rpx;width: 222rpx;}
+
+.noselect{color: #999999; font-size: 24rpx;}
+.basic .flex,.secret .flex{height: 85rpx;line-height: 85rpx; color: #333333;font-size: 24rpx;}
+.basic .item-b,.secret .item-b{color: #999999}
+
+.label-area .label{ flex-wrap: wrap;}
+.label-area .capsule{
+  padding:10rpx 30rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  background:#f5f5f5;
+  font-size:24rpx;
+  color:#333333;
+}
+.label-area{padding-bottom:40rpx;}
+.label-area .label-type{margin-bottom: 20rpx;}
+.label-area .title{padding-top: 0rpx; }
+.label-area .label-type:nth-child(1) .title{padding:40rpx 0rpx 20rpx 0rpx;}
+
+.report-picker{height:90rpx;line-height:70rpx;text-align:center;font-size:28rpx;color:#cccccc;}
+.report-picker .picker{display:inline-block;border-bottom:1px solid #cccccc;height:40rpx;line-height:40rpx;}
+
+.message{color:#00b1ff;font-size: 36rpx;padding-right:5rpx;}
+
+
+

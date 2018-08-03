@@ -23,3 +23,7 @@
   background: #0092ff;
   color: #fff
 }
+button::after{border: none;}
+.flex{display: flex}
+.flex-center{display: flex;align-items: center;align-content: center;}
+.item{flex: 1}

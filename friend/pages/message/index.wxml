@@ -1,0 +1,111 @@
+<!--pages/my/index.wxml-->
+<include src="../../utils/refreshHeaderView.wxml"/>
+<view  class="container">
+  <scroll-view class="scroll_container" scroll-y="true" style="position:relation;width:100%;left:0;height:{{windowHeight}}px;top:{{loadMoreHeight == 0? refreshHeight:-loadMoreHeight}}px;bottom:{{loadMoreHeight}}px;"  bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper" bindtouchstart="start" bindtouchend="end" > 
+    <view style="width:100%;height:100%" bindtouchmove="move">
+        <navigator url="/pages/messagelist/index?type=1" hover-class="navigator-hover">
+          <view class='tapbar'>
+            <view class=' h-130 left'>
+                <view class="h-130 flex-center ">
+                  <text class='iconfont icon-aixin myfocus'></text>
+                </view>
+            </view> 
+            <view class='middle border-bottom'>
+              <view class='userinfo  h-130'>
+                <text class='name'>我的关注</text>
+              </view>
+            </view> 
+            <view class='right border-bottom'>
+              <block wx:if="{{foucsCnt>99}}">
+                <text class='name'>...</text>
+              </block>
+              <block wx:elif="{{foucsCnt>0}}">
+                <text class='name'>{{foucsCnt}}</text>
+              </block>
+            </view>
+          </view>
+        </navigator>
+
+        <navigator url="/pages/messagelist/index?type=2" hover-class="navigator-hover">
+          <view class='tapbar'>
+            
+            <view class=' h-130 left'>
+                <view class="h-130 flex-center ">
+                  <text class='iconfont icon-touxiang myfans'></text>
+                </view>
+            </view> 
+
+            <view class='middle border-bottom'>
+              <view class='userinfo  h-130'>
+                <text class='name'>我的粉丝</text>
+              </view>
+            </view> 
+
+            <view class='right border-bottom'>
+              <block wx:if="{{fansCnt>99}}">
+                <text class='name'>...</text>
+              </block>
+              <block wx:elif="{{fansCnt>0}}">
+                <text class='name'>{{fansCnt}}</text>
+              </block>
+            </view>
+          </view>
+        </navigator>
+
+        <navigator url="/pages/messagelist/index?type=3" hover-class="navigator-hover">
+          <view class='tapbar'>
+            <view class=' h-130 left'>
+                <view class="h-130 flex-center ">
+                  <text class='iconfont icon-yanjing seeme'></text>
+                </view>
+            </view> 
+
+            <view class='middle border-bottom'>
+              <view class='userinfo  h-130'>
+                <text class='name'>我的访客</text>
+              </view>
+            </view> 
+
+            <view class='right border-bottom'>
+              <block wx:if="{{vistorCnt>99}}">
+                <text class='name'>...</text>
+              </block>
+              <block wx:elif="{{vistorCnt>0}}">
+                <text class='name'>{{vistorCnt}}</text>
+              </block>
+            </view>
+          </view>
+        </navigator>
+
+        <navigator url="/pages/messagelist/index?type=4" hover-class="navigator-hover">
+          <view class='tapbar'>
+            
+            <view class=' h-130 left'>
+                <view class="h-130 flex-center ">
+                  <text class='iconfont icon-tongzhi sys'></text>
+                </view>
+            </view> 
+
+            <view class='middle border-bottom'>
+              <view class='userinfo  h-130'>
+                <text class='name'>系统通知</text>
+              </view>
+            </view> 
+
+            <view class='right border-bottom'>
+              <block wx:if="{{sysCnt>99}}">
+                <text class='name'>...</text>
+              </block>
+              <block wx:elif="{{sysCnt>0}}">
+                <text class='name'>{{sysCnt}}</text>
+              </block>
+            </view>
+          </view>
+        </navigator>
+      
+      <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods"><text>没有更多啦</text></view>
+    </view>
+    
+  </scroll-view>
+</view>
+

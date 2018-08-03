@@ -1,0 +1,11 @@
+@import '../../utils/font.wxss';
+@import '../../utils/refreshView.wxss';
+
+.flex-center{display:flex;justify-content:center;align-items:center;}
+.iconfont{width:100rpx;height:100rpx;text-align:center;line-height:100rpx;background:#f5f5f5;border-radius:100rpx;}
+.tapbar .left{margin-right: 30rpx;}
+.myfocus{color: #ff5313;font-size:45rpx;}
+.myfans,.seeme,.sys{color: #0092ff;font-size:55rpx;}
+.tapbar .right .name{background:#ff5313;height:35rpx;width:35rpx;line-height:35rpx;text-align:center;font-size:20rpx;border-radius:35rpx;
+color:#fff;}
+

@@ -1,0 +1,34 @@
+<view class="chat" style="height: {{height}}px">
+    <scroll-view bindtap='hiddenEmoji' scroll-y='true' scroll-top="{{scrollTop}}" class="chat-content" style="height: {{chatHeight}}px">
+        <view class="chat-content-list {{uid === item.to_user_id ? 'right' : ''}}" wx:for="{{chatLists}}" wx:key="{{index}}">
+            <image class="chat-content-list-avatar" src="{{item.avatar}}"></image>
+            <view class="chat-content-list-content">
+                <!-- <view class="chat-content-list-name">{{item.nickname}}</view> -->
+                <view class="chat-content-list-msg ">
+                    <view class="chat-content-list-msg-white {{isAnd ? 'active' : ''}}"></view>
+                    <view  class="chat-content-list-msg-gray {{isAnd ? 'active' : ''}}"></view>
+                    <text class="{{uid === item.to_user_id ? 'white' : ''}}"selectable='true'>{{item.message}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="chat-set">
+        <view class="chat-set-write">
+            <input class="chat-set-input" hidden="{{!isChat}}" confirm-type="send" cursor-spacing="{{15}}" bindfocus="focus" focus="{{isFocus}}" bindinput="bindinput" bindconfirm="submitChat" value="{{chatContent}}"/>
+            <image catchtap="showEmoji" class="chat-set-icon chat-set-icon-right" src="./img/emoji.png"></image>
+            <button bindtap='submitChat' class="sent-btn">发送</button>
+        </view>
+        
+        <view class="chat-emoji" hidden="{{!isShow}}">
+            <scroll-view scroll-y="true" style="height:200px;background: #fff;">
+              <block wx:for="{{emojis}}" wx:for-item="e" wx:key="index">
+                <view class="chat-emoji-list">
+                  <image class="chat-emoji-icon" catchtap="emojiChoose" src="http://soupu.oss-cn-shanghai.aliyuncs.com/emoji/{{e.emoji}}.png" data-emoji="{{e.char}}" data-oxf="{{e.emoji}}"></image>
+                </view>
+              </block>
+            </scroll-view>
+        </view>
+    </view>
+
+    
+</view>

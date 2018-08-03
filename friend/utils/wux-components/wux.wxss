@@ -1173,7 +1173,6 @@
   bottom: 0;
   right: 0;
   height: 2rpx;
-  border-bottom: 2rpx solid #D9D9D9;
   color: #D9D9D9;
   -webkit-transform-origin: 0 100%;
           transform-origin: 0 100%;
@@ -2335,3 +2334,5 @@
   padding: 6rpx 16rpx;
   border-radius: 0 4rpx 4rpx 0;
 }
+
+.current-all{height: 50rpx;text-align: center;color: #fff;font-size: 22rpx;line-height:50rpx;}

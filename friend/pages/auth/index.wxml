@@ -1,0 +1,30 @@
+
+<view class='page'>
+  <view class='auth-container'>
+    <view class='tapbar auth-info'>
+      <view class='name flex item-input border-bottom'>
+        <text class='label'>姓名</text>
+        <input bindchange='changeName' value='{{Name}}' class='input' placeholder-class="phcolor" placeholder='请填写你的真实姓名'></input>
+      </view>
+      <view class='id-code flex item-input'>
+        <text class='label'>身份证</text>
+        <input bindchange='changeId' value='{{Id}}' class='input' placeholder-class="phcolor" placeholder='请填写你的身份证号'></input>
+      </view>
+    </view>
+    <view class='tapbar auth-image'>
+      <view class='flex pdp-60 border-bottom'> 
+        <view class='item flex-center'>身份证正面照</view>
+        <view class='item' data-img='img' bindtap='uploadImg'>
+          <image class="img" src="{{img?img:'/images/auth1.png'}}" />
+        </view>
+      </view>
+      <view class='pdp-60 flex'> 
+        <view class='item flex-center'>五官清晰的照片</view>
+        <view class='item' data-img='img_face' bindtap='uploadImg'>
+          <image class="img" src="{{imgFace?imgFace:'/images/auth2.png'}}" />
+        </view>
+      </view>
+    </view>
+    <view class='tapbar btn-area'><button bindtap='submit'>提交审核</button></view>
+  </view>
+</view>

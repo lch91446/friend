@@ -10,6 +10,7 @@ export default {
 			urls: [], 
 			[`delete`]() {}, 
 			cancel() {}, 
+      isdelete: true
 		}
 	},
 	/**

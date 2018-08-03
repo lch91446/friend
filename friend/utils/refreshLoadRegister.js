@@ -24,7 +24,6 @@ function register(context,json){
       context.setData({
         windowHeight: res.windowHeight
       })
-      console.log("屏幕高度: " + res.windowHeight);
       context.data.loadingHeight = res.windowHeight * 0.08;
     }
   });
@@ -49,25 +48,21 @@ function register(context,json){
 }
 
 function scroll (context){
-  console.log("scroll...");
   context.data.scrolling = true;
 
 }
 //上拉  滚动条 滚动到底部时触发
 function lower (context) {
-  console.log("lower...")
   context.data.isLower = true;
   context.data.scrolling = false;
 
 }
 //下拉  滚动条 滚动顶底部时触发
 function upper (context) {
-  console.log("upper....");
   context.data.isUpper = true;
   context.data.scrolling = false;
 }
 function start(context,e) {
-  console.log('start ');
   if (context.data.scrolling || context.data.loading) {
     return;
   }
@@ -87,7 +82,6 @@ function end(context,e) {
   if (context.data.refreshing) {
     return;
   }
-  console.log('end');
   //释放开始刷新
   var height = context.data.loadingHeight;
   if (context.data.refreshHeight > context.data.loadingHeight) {
@@ -119,7 +113,6 @@ function end(context,e) {
 
 function loadFinish(context,success) {
   if(!context){
-    console.log('please add context');
     return;
   }
   if(success){
@@ -156,7 +149,6 @@ function move(context,e) {
   }
   //1.下拉刷新
   if (context.data.isUpper && moveY > 0) {
-    //console.log("下拉...dy:", moveY);
     context.setData({
       refreshHeight: moveY
     })
@@ -172,7 +164,6 @@ function move(context,e) {
       })
     }
   } else if (context.data.isLower && moveY < 0) {//2上拉加载更多
-    //console.log("上拉...dy:", moveY);
     context.setData({
       loadMoreHeight: Math.abs(moveY)
     })

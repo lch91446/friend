@@ -1,0 +1,11 @@
+.page{background: #f5f5f5;font-size: 32rpx;color: #000;}
+.tapbar{margin-top: 20rpx;padding: 0 30rpx;background: #fff}
+.auth-container{margin-top: 20rpx;}
+.item-input{height: 90rpx;line-height: 90rpx; }
+.label{width: 140rpx;}
+.img{width: 335rpx;height: 212rpx}
+.phcolor{color: #cccccc}
+.item-input .input{height: 90rpx;width:100%;}
+.border-bottom{border-bottom: 1px solid #f5f5f5}
+.pdp-60{padding: 60rpx 0}
+.btn-area{padding: 60rpx 30rpx;}

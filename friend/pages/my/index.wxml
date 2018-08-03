@@ -22,18 +22,20 @@
     <view>
       
       <view class='tapbar'>
-        <view class='cell blue'>
-          <text class='left'>开通实名认证</text>
-          <view wx:if="{{userInfo.identification_status=='0'}}" class='go'>
-            <text class='capsule tobe'>待认证</text>
-          </view>
-          <view wx:elif="{{userInfo.identification_status=='1'}}" class='go'>
-            <text class='capsule tobe'>待审核</text>
-          </view>  
-          <view wx:else class='go'>
-            <text class='capsule had'>已认证</text>
-          </view> 
+        <navigator url="/pages/auth/index" hover-class="navigator-hover">
+          <view class='cell blue'>
+            <text class='left'>开通实名认证</text>
+            <view wx:if="{{userInfo.identification_status=='0'}}" class='go'>
+              <text class='capsule tobe'>待认证</text>
+            </view>
+            <view wx:elif="{{userInfo.identification_status=='1'}}" class='go'>
+              <text class='capsule tobe'>待审核</text>
+            </view>  
+            <view wx:else class='go'>
+              <text class='capsule had'>已认证</text>
+            </view> 
         </view>
+        </navigator>
       </view>
 
       <view class='tapbar'>
@@ -106,7 +108,9 @@
       </view>
 
       <view class='tapbar'>
-        <view class='cell'>设置</view>
+        <navigator url="/pages/set/index" hover-class="navigator-hover">
+          <view class='cell'>设置</view>
+        </navigator>
       </view>
     </view>
 
