@@ -21,7 +21,7 @@ Page({
         console.log(rel.data.data.article.content)
       }
     }
-    app.jamasTool.request(params);
+    // app.jamasTool.request(params);
  
   }
 })

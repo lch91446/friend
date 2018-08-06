@@ -1,5 +1,70 @@
+<view class='page'>
 
-<import src="../../utils/wxParse/wxParse.wxml"/> 
-<view class="wxParse">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  <block wx:if="{{1}}">
+    <view class='on-activity'>
+      <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
+        <view class='tapbar'>
+          <view class='pic'>
+            <image src='http://img.haining.com.cn/friend/uploads/095fec06746cbd6ce0e24d26a8f36649.jpg'></image>
+          </view>
+          <view class='detail'>
+            <text wx:if="{{1}}" class='capsule'>进行中</text>
+            <text class='des'>【17聚餐】海论17美食团——高颜值意大利餐厅迷迭香试吃招募 海论17美食团——高颜值意大利餐厅迷迭香试吃招募——高颜值意大利餐厅               </text>
+          </view>
+          <view class='space'></view>
+        
+        </view>
+      </navigator>
+
+    </view>
+  </block>
+  <block wx:if="{{1}}">
+    <view class='tapbar past-activity'>
+      <view class='title'>
+        <text>往期活动</text>
+      </view>
+      <view class='activity-list'>
+        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
+          <view class='flex activity-item border-bottom'>
+            <view class='img'>
+              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
+            </view>
+            <view class='detail'>
+              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
+              <view class='time'><text>2018-09-20</text></view>
+            </view>
+          </view>
+        </navigator>
+
+        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
+          <view class='flex activity-item border-bottom'>
+            <view class='img'>
+              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
+            </view>
+            <view class='detail'>
+              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
+              <view class='time'><text>2018-09-20</text></view>
+            </view>
+          </view>
+        </navigator>
+
+        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
+          <view class='flex activity-item border-bottom'>
+            <view class='img'>
+              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
+            </view>
+            <view class='detail'>
+              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
+              <view class='time'><text>2018-09-20</text></view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+    </view>
+  </block>
+  <block wx:else>
+    <view class='tapbar none-activity'><text>暂无活动...</text></view>
+  </block>
+
 </view>

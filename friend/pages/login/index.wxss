@@ -1,12 +1,1 @@
-/* @import "../index/index.wxss"; */
-.content{text-align: center}
-.logo{margin-top: 50rpx;margin-bottom: 60rpx}
-.logo image{width:640rpx;}
-
-
-input{padding-left: 30rpx;}
-.input-area,.btn-area{text-align: center;padding: 10rpm;font-size: 16px;color: black;width: 100%;margin: 0 auto}
-.input-area input{display: inline-block;width: 90%;height: 80rpx;margin-top: 10rpx;border: 1px solid #2f9cf9;border-radius: 10rpx;text-align: left}
-.btn-area{width: 90%;margin-top: 20rpx}
-.txt-area{margin-top: 30rpx;color: #ccc}
-
+@import "../register/index.wxss";

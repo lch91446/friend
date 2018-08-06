@@ -3,5 +3,10 @@
 <view class="wxParse">
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 
-    <button class=''>1111</button>
+    <block wx:if="{{0}}">
+    <view  class='btn-area'><button>我要报名</button> </view>
+    </block>
+    <block wx:else>
+    <view  class='btn-area'><button>已报名</button> </view>
+    </block>
 </view>

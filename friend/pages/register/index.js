@@ -14,9 +14,9 @@ Page({
     inputPassword: '',
     phoneNum: '',
     openid : "",
+    which: true
   },
   onLoad: function (options) {
-    
     wx.getStorage({
       key: 'openid',
       success: (res)=>{
@@ -59,6 +59,11 @@ Page({
 
         })
       }
+    })
+  },
+  tri(){
+    this.setData({
+      which: !this.data.which
     })
   },
   onReady: function () {

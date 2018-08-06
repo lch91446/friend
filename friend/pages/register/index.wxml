@@ -1,28 +1,36 @@
-<view class="content">
-    <view class = "logo">
-        <image mode="aspectFit" src="/images/Hello.png"></image>
-    </view>
-    <form bindsubmit="formSubmit">
-        <view class="input-area">
-          <input id="username" placeholder-class="phcolor" name="username" maxlength='30' type="text" placeholder="请输入昵称"/>
-          <input id="password" placeholder-class="phcolor" name="password" maxlength='20' type="password" placeholder="请设置密码" />
-          <input id="phone" placeholder-class="phcolor" name="phone" maxlength='11' type="text" placeholder="请输入手机号" bindchange="getPhoneNum"/>
-          <input id="smsCode" placeholder-class="phcolor" name="smsCode" maxlength='6' type="text" placeholder="请输入验证码" />
-          <view class="smsCode">
-            
-            <button bindtap = "getSmsCode" disabled="{{smsCodeDisabled}}" style="background-color:{{getSmsCodeBtnColor}}"   class="getSmsCodeBtn">{{getSmsCodeBtnTxt}}</button>
-          </view>
-
-        </view>
-        <view class="btn-area">
-            <button  disabled="{{registDisabled}}" style="background-color:{{registBtnBgBgColor}}"   formType="submit"  loading="{{btnLoading}}"> {{registBtnTxt}} </button>
-            <view class="txt-area">
-                 我已阅读并同意<navigator redirect url="../login/index"><text class="register">海论交友用户协议</text></navigator>
+<block wx:if="{{which}}">
+  <view class="content">
+      <view class = "logo">
+          <image mode="aspectFit" src="/images/Hello.png"></image>
+      </view>
+      <form bindsubmit="formSubmit">
+          <view class="input-area">
+            <input id="username" placeholder-class="phcolor" name="username" maxlength='30' type="text" placeholder="请输入昵称"/>
+            <input id="password" placeholder-class="phcolor" name="password" maxlength='20' type="password" placeholder="请设置密码" />
+            <input id="phone" placeholder-class="phcolor" name="phone" maxlength='11' type="text" placeholder="请输入手机号" bindchange="getPhoneNum"/>
+            <input id="smsCode" placeholder-class="phcolor" name="smsCode" maxlength='6' type="text" placeholder="请输入验证码" />
+            <view class="smsCode">
+              <button bindtap = "getSmsCode" disabled="{{smsCodeDisabled}}" style="background-color:{{getSmsCodeBtnColor}}"   class="getSmsCodeBtn">{{getSmsCodeBtnTxt}}</button>
             </view>
-        </view>
-    </form>
 
-    <!--<progress class="myprogress" percent="{{percent }}" color="{{color}}" active/>-->
-    
-</view>
+          </view>
+          <view class="btn-area">
+              <button  disabled="{{registDisabled}}" style="background-color:{{registBtnBgBgColor}}"   formType="submit"  loading="{{btnLoading}}"> {{registBtnTxt}} </button>
+              <view class="txt-area">
+                  <view>我已阅读并同意<text class='warn-info' bindtap='tri'>海论交友用户协议</text></view>
+              </view>
+          </view>
+      </form>
+  </view>
+</block>
+<block wx:else>
+
+111111111
+<view class="area">
+  <view class="btn-area">
+      <button  bindtap='tri'>返回</button>
+  </view>
+  </view>
+</block>
+
 

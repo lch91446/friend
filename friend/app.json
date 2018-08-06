@@ -1,6 +1,16 @@
 {
   "pages": [
-    
+
+
+    "pages/activityList/index",
+    "pages/activity/index",  
+    "pages/articleList/index",
+    "pages/article/index",
+
+    "pages/register/index",
+    "pages/login/index",
+    "pages/activation/index",
+
     "pages/my/index",
     "pages/auth/index",
     "pages/message/index",
@@ -13,17 +23,13 @@
     "pages/myfans/index",
     "pages/index/index",
     "pages/myvisitor/index",
-    
     "pages/basicinfo/index",
     "pages/myalbum/index",
-    "pages/article/index",
-    "pages/articleList/index",
     "pages/fillinfo/index",
-    "pages/register/index",
     "pages/avatarUpload/upload/upload",
-    "pages/avatarUpload/getavater/upload",
-    "pages/login/index",
-    "pages/activation/index"
+    "pages/avatarUpload/getavater/upload"
+    
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

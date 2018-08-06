@@ -1,20 +1,19 @@
 <view class="content">
     <view class = "logo">
-        <image mode="aspectFit" src="/images/u2.png"></image>
+        <image mode="aspectFit" src="/images/Hello.png"></image>
     </view>
     <form bindsubmit="formSubmit">
         <view class="input-area">
-          <input id="username" name="username" maxlength='11' type="text" placeholder="用户名"/>
-          <input id="password" name="password" maxlength='20' type="password" placeholder="密码" />
+          <input id="username" placeholder-class="phcolor" name="username" maxlength='30' type="text" placeholder="用户名"/>
+          <input id="password" placeholder-class="phcolor" name="password" maxlength='20' type="password" placeholder="密码" />
         </view>
         <view class="btn-area">
-            <button  disabled="{{registDisabled}}" style="background-color:{{registBtnBgBgColor}}"   formType="submit"  loading="{{btnLoading}}"> {{registBtnTxt}} </button>
+            <button  disabled="{{registDisabled}}" formType="submit"  loading="{{btnLoading}}"> {{registBtnTxt}} </button>
             <view class="txt-area">
-                 <navigator redirect url="../register/index"><text class="register">注册账号</text></navigator>
+                  <navigator redirect url="../register/index"><text class="register">注册账号</text></navigator>
             </view>
         </view>
     </form>
 
-    
-</view>
 
+</view>
