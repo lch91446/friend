@@ -1,5 +1,26 @@
+<view class="page">
+  <block wx:if="{{articlesList.length>0}}">
+    <view class='tapbar flex'>
+      <navigator class='item-a' url="/pages/matchmaker/index?id={{item.id}}" hover-class="navigator-hover"  wx:for="{{articlesList}}" wx:key="{{item.id}}">
+        <view class='avatar'>
+          <image src='{{item.avatar}}'></image>
+        </view>
+        <view class='detail'>
+          <view class='name'>
+            {{item.name}}
+          </view>
+          <view class='desc'>
+            {{item.declaration}}
+          </view>
+        </view>
+        <view class='connect btn-area '>
+          <button>找她牵线</button>
+        </view>
+      </navigator>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='tapbar none-activity'><text>暂无红娘...</text></view>
+  </block>
 
-<import src="../../utils/wxParse/wxParse.wxml"/> 
-<view class="wxParse">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 </view>

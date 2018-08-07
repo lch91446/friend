@@ -1,27 +1,30 @@
 var app = getApp();
 Page({
   data: {
+    doingactivity: [],
+    hadactivity: [],
+    toactivity: []
   },
   onLoad: function () {
   
     let params = {
-      url: 'operate/getArticlesList',
+      url: 'sundry/getActivityList',
       header: {
         'Content-Type': 'application/json',
-        'token': this.data.token
       },
       method: 'post',
       data: {
-        id: 2
       },
       needLoadingIndicator: true,
       success: (rel) => {
-        var article = rel.data.data.article.content
-        console.log(article)
-        console.log(rel.data.data.article.content)
+        this.setData({
+          doingactivity: rel.data.data.doingactivity,
+          hadactivity: rel.data.data.hadactivity,
+          toactivity: rel.data.data.toactivity
+        })
       }
     }
-    // app.jamasTool.request(params);
+    app.jamasTool.request(params);
  
   }
 })

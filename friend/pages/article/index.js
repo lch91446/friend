@@ -5,18 +5,19 @@ var app = getApp();
 Page({
   data: {
   },
-  onLoad: function () {
-  
+  onLoad: function (option) {
+
+    this.setData({
+      id: option.id
+    })
     let params = {
-      // url: 'operate/getArticlesList',
-      url: 'operate/getArticle',
+      url: 'sundry/getArticle',
       header: {
         'Content-Type': 'application/json',
-        'token': this.data.token
       },
       method: 'post',
       data: {
-        id: 2
+        id: this.data.id
       },
       needLoadingIndicator: true,
       success: (rel) => {

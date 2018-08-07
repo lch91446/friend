@@ -5,18 +5,20 @@ var app = getApp();
 Page({
   data: {
   },
-  onLoad: function () {
-  
+  onLoad: function (option) {
+
+    this.setData({
+      id: option.id
+    })
     let params = {
-      // url: 'operate/getArticlesList',
-      url: 'operate/getArticle',
+      url: 'sundry/getMatchmaker',
       header: {
         'Content-Type': 'application/json',
         'token': this.data.token
       },
       method: 'post',
       data: {
-        id: 2
+        id: this.data.id
       },
       needLoadingIndicator: true,
       success: (rel) => {
@@ -25,7 +27,7 @@ Page({
         console.log(rel.data.data.article.content)
         WxParse.wxParse('article', 'html', article, this, 5);
         wx.setNavigationBarTitle({
-          title: rel.data.data.article.title
+          title: rel.data.data.article.name
         })
 
       }

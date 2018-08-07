@@ -1,27 +1,27 @@
 var app = getApp();
 Page({
   data: {
+    articlesList: []
   },
   onLoad: function () {
-  
+
     let params = {
-      url: 'operate/getArticlesList',
+      url: 'sundry/getDatingsiteList',
       header: {
         'Content-Type': 'application/json',
-        'token': this.data.token
       },
       method: 'post',
       data: {
-        id: 2
       },
       needLoadingIndicator: true,
       success: (rel) => {
-        var article = rel.data.data.article.content
-        console.log(article)
-        console.log(rel.data.data.article.content)
+        console.log(rel)
+        this.setData({
+          articlesList: rel.data.data.articlesList
+        })
       }
     }
     app.jamasTool.request(params);
- 
+
   }
 })

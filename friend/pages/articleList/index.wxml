@@ -1,45 +1,19 @@
 <view class='page'>
-  <block wx:if="{{1}}">
+  <block wx:if="{{articlesList.length>0}}">
     <view class='tapbar past-activity'>
-      <view class='title'>
-        <text>往期活动</text>
-      </view>
       <view class='activity-list'>
-        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
+        <navigator url="/pages/article/index?id={{item.id}}" hover-class="navigator-hover"  wx:for="{{articlesList}}" wx:key="{{item.id}}">
           <view class='flex activity-item border-bottom'>
             <view class='img'>
-              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
+              <image src='{{item.image}}'></image>
             </view>
             <view class='detail'>
-              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
-              <view class='time'><text>2018-09-20</text></view>
+              <view class='des'><text>{{item.title}}</text></view>
+              <view class='time'><text>{{item.updatetimedate}}</text></view>
             </view>
           </view>
         </navigator>
 
-        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
-          <view class='flex activity-item border-bottom'>
-            <view class='img'>
-              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
-            </view>
-            <view class='detail'>
-              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
-              <view class='time'><text>2018-09-20</text></view>
-            </view>
-          </view>
-        </navigator>
-
-        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
-          <view class='flex activity-item border-bottom'>
-            <view class='img'>
-              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
-            </view>
-            <view class='detail'>
-              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
-              <view class='time'><text>2018-09-20</text></view>
-            </view>
-          </view>
-        </navigator>
       </view>
 
     </view>

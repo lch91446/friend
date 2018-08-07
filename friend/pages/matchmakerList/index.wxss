@@ -1,1 +1,15 @@
-@import "../../utils/wxParse/wxParse.wxss";
+page{background: #f5f5f5;min-height: 100vh}
+.tapbar{margin-top: 40rpx;padding:0 38rpx;background:#f5f5f5;}
+.flex{display: flex;flex-wrap:wrap;margin: 40rpx 30rpx 0;padding: 0rpx}
+.tapbar .detail {font-size:26rpx;}
+.item-a{padding-top:35rpx;background:#fff;border-radius: 10rpx;padding-bottom: 40rpx;margin-bottom:20rpx;}
+.item-a { width: 335rpx}
+.item-a:nth-child(2n+1){margin-right: 20rpx;}
+.item-a .avatar{display: flex;justify-content: center;align-items: center;padding-bottom: 42rpx}
+.item-a .avatar image{width: 170rpx;height: 170rpx;border-radius: 170rpx;}
+.item-a .detail{text-align: center}
+.item-a .detail .name{font-size: 32rpx; font-weight: bold}
+.item-a .detail .desc{color:#a7a7a7;padding:30rpx 30rpx 0rpx 30rpx;line-height:35rpx;overflow:hidden;text-overflow:ellipsis;
+display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:30rpx;}
+.btn-area button{height: 47rpx;width: 125rpx;padding: 0;line-height: 45rpx;font-size: 24rpx;}
+.none-activity{text-align: center;color: #cccccc;font-size: 28rpx;}

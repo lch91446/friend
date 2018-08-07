@@ -3,10 +3,13 @@
 <view class="wxParse">
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 
-    <block wx:if="{{0}}">
-    <view  class='btn-area'><button>我要报名</button> </view>
+    <block wx:if="{{isdoing}}">
+    <view  class='btn-area'><button class='hadjoin'>活动尚未开始或已经结束</button> </view>
+    </block>
+    <block wx:elif="{{isJoin}}">
+    <view  class='btn-area'><button class='hadjoin'>已报名</button> </view>
     </block>
     <block wx:else>
-    <view  class='btn-area'><button>已报名</button> </view>
+    <view  class='btn-area'><button bindtap='join'>我要报名</button> </view>
     </block>
 </view>

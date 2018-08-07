@@ -1,11 +1,14 @@
 {
   "pages": [
-
-
-    "pages/activityList/index",
-    "pages/activity/index",  
+    "pages/ListView/ListView",
+    "pages/matchmakerList/index",
+    "pages/matchmaker/index",
+    "pages/datingsiteList/index",
+    "pages/datingsite/index",
     "pages/articleList/index",
     "pages/article/index",
+    "pages/activityList/index",
+    "pages/activity/index",  
 
     "pages/register/index",
     "pages/login/index",
@@ -16,7 +19,7 @@
     "pages/message/index",
     "pages/messagelist/index",
     "pages/set/index",
-    "pages/ListView/ListView",
+    
     "pages/user/index",  
     "pages/chat/index",
     "pages/followme/index",

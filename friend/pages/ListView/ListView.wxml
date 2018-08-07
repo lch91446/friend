@@ -28,10 +28,14 @@
                     data-index='{{index}}' 
                     animation="{{curIndex == index? animationToLarge : animationToSmall}}" 
                     style='width: {{itemWidth}}px;transform: scale({{curIndex == index ? 1 : scale}});'>
-
-                
-                  <image src= "{{item.image}}"></image>
-
+                  <block wx:if="{{item.jump}}">
+                    <navigator url="{{item.jump}}" hover-class="navigator-hover">
+                      <image src= "{{item.image}}"></image>
+                    </navigator>
+                  </block>
+                  <block wx:else>
+                    <image src= "{{item.image}}"></image>
+                  </block>
               </view>
             </block>
 
@@ -40,19 +44,27 @@
 
         <view class="nav">
           <view class="nav-item">
-            <image src='../../images/index/nav1.png'></image>
+            <navigator url="/pages/activityList/index" hover-class="navigator-hover">
+              <image src='../../images/index/nav1.png'></image>
+            </navigator>
             <text>活动</text>
           </view>
           <view class="nav-item">
-            <image src='../../images/index/nav2.png'></image>
+            <navigator url="/pages/articleList/index" hover-class="navigator-hover">
+              <image src='../../images/index/nav2.png'></image>
+            </navigator>
             <text>情感</text>
           </view>
           <view class="nav-item">
-            <image src='../../images/index/nav3.png'></image>
+            <navigator url="/pages/datingsiteList/index" hover-class="navigator-hover">
+              <image src='../../images/index/nav3.png'></image>
+            </navigator>
             <text>阵地</text>
           </view>
           <view class="nav-item">
-            <image src='../../images/index/nav4.png'></image>
+            <navigator url="/pages/matchmakerList/index" hover-class="navigator-hover">
+              <image src='../../images/index/nav4.png'></image>
+            </navigator>
             <text>红娘</text>
           </view>
         </view>

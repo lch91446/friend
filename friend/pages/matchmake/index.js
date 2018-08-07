@@ -11,7 +11,7 @@ Page({
       id: option.id
     })
     let params = {
-      url: 'sundry/getDatingsite',
+      url: 'sundry/getMatchmaker',
       header: {
         'Content-Type': 'application/json',
       },
@@ -26,7 +26,7 @@ Page({
         console.log(rel.data.data.article.content)
         WxParse.wxParse('article', 'html', article, this, 5);
         wx.setNavigationBarTitle({
-          title: rel.data.data.article.name
+          title: rel.data.data.article.title
         })
 
       }

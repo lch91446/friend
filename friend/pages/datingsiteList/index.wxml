@@ -1,5 +1,25 @@
+<view class='page'>
+  <block wx:if="{{articlesList.length>0}}">
+    <view class='tapbar past-activity'>
+      <view class='activity-list'>
+        <navigator url="/pages/datingsite/index?id={{item.id}}" hover-class="navigator-hover"  wx:for="{{articlesList}}" wx:key="{{item.id}}">
+          <view class='flex activity-item border-bottom'>
+            <view class='img'>
+              <image src='{{item.image}}'></image>
+            </view>
+            <view class='detail'>
+              <view class='des'><text>{{item.description}}</text></view>
+              <view class='time'><text>{{item.updatetimedate}}</text></view>
+            </view>
+          </view>
+        </navigator>
 
-<import src="../../utils/wxParse/wxParse.wxml"/> 
-<view class="wxParse">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+
+    </view>
+  </block>
+  <block wx:else>
+    <view class='tapbar none-activity'><text>暂无阵地...</text></view>
+  </block>
+
 </view>

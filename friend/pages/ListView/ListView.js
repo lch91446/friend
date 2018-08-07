@@ -325,7 +325,7 @@ Page({
   },
   doLoadData(params) {
     let params3 = {
-      url: 'Operate/getIndexUserList',
+      url: 'Sundry/getIndexUserList',
       header: {
         'Content-Type': 'application/json',
         'token': this.data.token
@@ -434,7 +434,7 @@ Page({
     })
 
     let params = {
-      url: 'Operate/getAds',
+      url: 'Sundry/getAds',
       header: {
         'Content-Type': 'application/json',
         'token': this.data.token
@@ -488,7 +488,7 @@ Page({
 
 
     let params2 = {
-      url: 'Operate/getAds',
+      url: 'Sundry/getAds',
       header: {
         'Content-Type': 'application/json',
         'token': this.data.token

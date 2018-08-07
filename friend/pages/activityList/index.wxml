@@ -1,64 +1,58 @@
 <view class='page'>
 
-  <block wx:if="{{1}}">
-    <view class='on-activity'>
-      <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
+  <block wx:if="{{doingactivity.length>0}}">
+    <view wx:for="{{doingactivity}}" class='on-activity' wx:key="{{item.id}}">
+      <navigator url="/pages/activity/index?id={{item.id}}" hover-class="navigator-hover">
         <view class='tapbar'>
           <view class='pic'>
-            <image src='http://img.haining.com.cn/friend/uploads/095fec06746cbd6ce0e24d26a8f36649.jpg'></image>
+            <image src='{{item.image}}'></image>
           </view>
           <view class='detail'>
-            <text wx:if="{{1}}" class='capsule'>进行中</text>
-            <text class='des'>【17聚餐】海论17美食团——高颜值意大利餐厅迷迭香试吃招募 海论17美食团——高颜值意大利餐厅迷迭香试吃招募——高颜值意大利餐厅               </text>
+            <text class='capsule'>进行中</text>
+            <text class='des'>{{item.name}}</text>
           </view>
           <view class='space'></view>
-        
         </view>
       </navigator>
-
     </view>
   </block>
-  <block wx:if="{{1}}">
+
+  <block wx:if="{{toactivity.length>0}}">
+    <view wx:for="{{toactivity}}" class='on-activity' wx:key="{{item.id}}">
+      <navigator url="/pages/activity/index?id={{item.id}}" hover-class="navigator-hover">
+        <view class='tapbar'>
+          <view class='pic'>
+            <image src='{{item.image}}'></image>
+          </view>
+          <view class='detail'>
+            <text class='capsule'>筹备中</text>
+            <text class='des'>{{item.name}}</text>
+          </view>
+          <view class='space'></view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+
+
+  <block wx:if="{{hadactivity.length>0}}">
     <view class='tapbar past-activity'>
       <view class='title'>
         <text>往期活动</text>
       </view>
       <view class='activity-list'>
-        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
-          <view class='flex activity-item border-bottom'>
+       <navigator url="/pages/activity/index?id={{item.id}}" hover-class="navigator-hover"  wx:for="{{hadactivity}}" wx:key="{{item.id}}">
+        <view class='flex activity-item border-bottom'>
             <view class='img'>
-              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
+              <image src='{{item.thumbimage}}'></image>
             </view>
             <view class='detail'>
-              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
-              <view class='time'><text>2018-09-20</text></view>
+              <view class='des'><text>{{item.name}}</text></view>
+              <view class='time'><text>{{item.updatetimedate}}</text></view>
             </view>
-          </view>
-        </navigator>
+        </view>
+       </navigator>
 
-        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
-          <view class='flex activity-item border-bottom'>
-            <view class='img'>
-              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
-            </view>
-            <view class='detail'>
-              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
-              <view class='time'><text>2018-09-20</text></view>
-            </view>
-          </view>
-        </navigator>
-
-        <navigator url="/pages/activity/index?id=1" hover-class="navigator-hover">
-          <view class='flex activity-item border-bottom'>
-            <view class='img'>
-              <image src='http://img.haining.com.cn/friend/uploads/bbfad484722ad3bad8ea5a15837ff557.jpg'></image>
-            </view>
-            <view class='detail'>
-              <view class='des'><text>[情感倾诉] 求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子求家庭暖男支招哄老婆过日子</text></view>
-              <view class='time'><text>2018-09-20</text></view>
-            </view>
-          </view>
-        </navigator>
       </view>
 
     </view>
