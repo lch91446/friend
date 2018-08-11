@@ -1,5 +1,6 @@
 const config = {
   baseRequestUrl: "http://www.test.com/index.php/api/",
+  // baseRequestUrl: "https://mini.haining.cn/index.php/api/",
   http:{
     defaultHead: {
       'Content-Type': 'application/json',

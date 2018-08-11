@@ -1,4 +1,5 @@
 var util = require("../../utils/util.js");
+var WxParse = require('../../utils/wxParse/wxParse.js');
 var app = getApp();
 Page({
   data: {
@@ -60,6 +61,24 @@ Page({
         })
       }
     })
+
+    let params = {
+      url: 'sundry/getRule',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      data: {
+      },
+      needLoadingIndicator: true,
+      success: (rel) => {
+        var article = rel.data.data.rule
+        console.log(article)
+        console.log(rel.data.data.rule)
+        WxParse.wxParse('article', 'html', article, this, 5);
+      }
+    }
+    app.jamasTool.request(params);
   },
   tri(){
     this.setData({

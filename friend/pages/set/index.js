@@ -59,7 +59,6 @@ Page({
     console.log("onShow");
   },
   logout(){
-
     console.log('logout')
     let params3 = {
       url: 'user/logout',
@@ -73,13 +72,8 @@ Page({
       success: (rel) => {
         console.log(rel)
         if (rel.data.code == "1") {
-
-          this.setData({
-            userInfo: {
-
-            }
-          })
-          console.log(this.data);
+          wx.clearStorage()  
+          this.redirectToIndex()
         } else if (rel.data.code == "401") {
           wx.showModal({
             title: '提示',
@@ -98,11 +92,16 @@ Page({
         }
       }
     }
-    // app.jamasTool.request(params3);
+    app.jamasTool.request(params3);
   },
   redirectToLogin: function () {
     wx.redirectTo({
       url: '../login/index'
+    })
+  },
+  redirectToIndex: function () {
+    wx.switchTab({
+      url: '../ListView/ListView',
     })
   },
 })

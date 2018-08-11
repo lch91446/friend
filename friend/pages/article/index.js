@@ -1,5 +1,5 @@
 var WxParse = require('../../utils/wxParse/wxParse.js');
-
+var util = require("../../utils/util.js");
 var app = getApp();
 
 Page({
@@ -33,5 +33,27 @@ Page({
     }
     app.jamasTool.request(params);
  
-  }
+  },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      console.log(ops.target)
+    }
+    return {
+      title: app.globalData.shareProfile,
+      path: util.getCurrentPageUrlWithArgs(),
+      imageUrl: app.globalData.shareimageUrl,
+      success: function (res) {
+        wx.showToast({
+          icon: "none",
+          title: '分享成功',
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          icon: "none",
+          title: '分享失败',
+        })
+      }
+    }
+  },
 })

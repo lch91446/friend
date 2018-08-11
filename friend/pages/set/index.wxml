@@ -2,7 +2,7 @@
 <view class="container">
     <view>
       <view class='tapbar'>
-        <navigator url="/pages/myalbum/index" hover-class="navigator-hover">
+        <navigator url="/pages/privacyset/index" hover-class="navigator-hover">
           <view class='cell border-bottom'>
             <view class='left'>
             <text>隐私设置</text>        
@@ -15,7 +15,7 @@
           </view>
         </navigator>
 
-        <navigator url="/pages/followme/index" hover-class="navigator-hover">
+        <navigator url="/pages/changepassword/index" hover-class="navigator-hover">
           <view class='cell border-bottom'>
             <view class='left'>
             <text>修改密码</text>        
@@ -28,7 +28,7 @@
           </view>
         </navigator>
 
-        <navigator url="/pages/myfans/index" hover-class="navigator-hover">  
+        <navigator url="/pages/suggest/index" hover-class="navigator-hover">  
           <view class='cell border-bottom'>
             <view class='left'>
             <text>意见反馈</text>        
@@ -41,7 +41,7 @@
           </view>
         </navigator> 
 
-        <navigator url="/pages/myvisitor/index" hover-class="navigator-hover">  
+        <navigator url="/pages/about/index" hover-class="navigator-hover">  
           <view class='cell border-bottom'>
             <view class='left'>
             <text>关于我们</text>        

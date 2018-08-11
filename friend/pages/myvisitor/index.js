@@ -104,6 +104,28 @@ Page({
       page: this.data.page
     });
   },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      console.log(ops.target)
+    }
+    return {
+      title: app.globalData.shareProfile,
+      path: 'pages/ListView/ListView',
+      imageUrl: app.globalData.shareimageUrl,
+      success: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '转发成功',
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '转发失败',
+        })
+      }
+    }
+  },
   redirectToLogin: function () {
     wx.redirectTo({
       url: '../login/index'

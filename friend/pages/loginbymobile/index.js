@@ -2,7 +2,7 @@ var util = require("../../utils/util.js");
 var app = getApp();
 Page({
   data: {
-    registBtnTxt: "激活",
+    registBtnTxt: "登陆",
     registBtnBgBgColor: "#ff9900",
     getSmsCodeBtnTxt: "获取验证码",
     getSmsCodeBtnColor: "#ff9900",
@@ -14,21 +14,6 @@ Page({
     token : "",
   },
   onLoad: function (options) {
-    
-    wx.getStorage({
-      key: 'token',
-      success: (res)=>{
-        this.setData({
-          token : res.data
-        })
-        console.log(this.data.token);
-      },
-      fail: (res)=>{
-        console.log("login in")
-        // 页面初始化 options为页面跳转所带来的参数
-        this.redirectToLogin()
-      }
-    })
   },
   onReady: function () {
     // 页面渲染完成
@@ -94,7 +79,7 @@ Page({
       this.setregistData1();
 
       let params = {
-        url: 'user/changemobile',
+        url: 'user/mobilelogin',
         header: {
           'Content-Type': 'application/json',
           'token' : this.data.token
@@ -107,7 +92,8 @@ Page({
         success: (rel) => {
           console.log(rel)
           if (rel.data.code == "1") {
-            wx.setStorageSync("userinfo", rel.data.data.userinfo)
+              wx.setStorageSync("userinfo", rel.data.data.userinfo)
+              wx.setStorageSync("token", rel.data.data.userinfo.token)
           }
 
           wx.showModal({
@@ -136,7 +122,7 @@ Page({
   },
   setregistData1: function () {
     this.setData({
-      registBtnTxt: "激活中",
+      registBtnTxt: "登陆中",
       registDisabled: !this.data.registDisabled,
       registBtnBgBgColor: "#999",
       btnLoading: !this.data.btnLoading
@@ -144,7 +130,7 @@ Page({
   },
   setregistData2: function () {
     this.setData({
-      registBtnTxt: "激活",
+      registBtnTxt: "登陆",
       registDisabled: !this.data.registDisabled,
       registBtnBgBgColor: "#ff9900",
       btnLoading: !this.data.btnLoading
@@ -193,7 +179,7 @@ Page({
         method: 'post',
         data: {
           mobile: phoneNum,
-          event: "changemobile",
+          event: "loginbymobile",
         },
         needLoadingIndicator: true,
         success: (rel) => {
@@ -234,37 +220,9 @@ Page({
     }
 
   },
-  onShareAppMessage: function (ops) {
-    if (ops.from === 'button') {
-      console.log(ops.target)
-    }
-    return {
-      title: app.globalData.shareProfile,
-      path: 'pages/ListView/ListView',
-      imageUrl: app.globalData.shareimageUrl,
-      success: function (res) {
-        wx.showToast({
-          icon: 'none',
-          title: '转发成功',
-        })
-      },
-      fail: function (res) {
-        wx.showToast({
-          icon: 'none',
-          title: '转发失败',
-        })
-      }
-    }
-  },
-  redirectToLogin: function () {
-    wx.redirectTo({
-      url: '../login/index'
-    })
-  },
   redirectToMyself: function () {
-    wx.redirectTo({
-      url: '../my/index'
+    wx.switchTab({
+      url: '../my/index',
     })
   }
-
 })

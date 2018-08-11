@@ -1,0 +1,16 @@
+<!--pages/my/index.wxml-->
+<view class="container">
+
+  <view class='tapbar'>
+      <view class='cell border-bottom'>
+        <view class='left'>
+        <text>隐私设置</text>        
+        </view> 
+        <view class='go'>
+          <view>
+            <switch bindchange="switchChange" checked="{{isopen}}" color="#0092ff"></switch>
+          </view>  
+        </view>  
+      </view>
+  </view>
+</view>

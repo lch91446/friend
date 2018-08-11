@@ -15,7 +15,7 @@ Page({
       token: app.jamasTool.getUserToken()
     })
     register.register(this);
-    this.getData()
+    
 
   },
   getData(){
@@ -64,6 +64,7 @@ Page({
   },
   onShow: function () {
     console.log("onShow");
+    this.getData()
   },
   refresh: function () {
     this.setData({
@@ -76,6 +77,28 @@ Page({
     this.getData()
   },
   loadMore: function () {
+  },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      console.log(ops.target)
+    }
+    return {
+      title: app.globalData.shareProfile,
+      path: 'pages/ListView/ListView',
+      imageUrl: app.globalData.shareimageUrl,
+      success: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '转发成功',
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '转发失败',
+        })
+      }
+    }
   },
   redirectToLogin: function () {
     wx.redirectTo({

@@ -76,7 +76,7 @@
                 <block wx:for="{{goods}}" wx:key="index">
                   <block wx:if="{{index % 2 == 0}}">
                     <view class='userinfo' bindtap='toDetailsTap' data-id='{{item.id}}'>
-                      <image src="{{item.avatar}}" mode="widthFix"></image>
+                      <image lazy-load='true'  src="{{item.avatar}}" mode="widthFix"></image>
                       <view wx:if="{{item.identification_status=='2'}}" class='identification'><icon class="icon" type="success_no_circle" size="12"/>已完成认证</view>
                       <text class='name'>{{ item.nickname }}</text>
                       <block wx:if="{{item.gender=='male'}}">
@@ -101,7 +101,7 @@
                 <block wx:for="{{goods}}" wx:key="index">
                   <block wx:if="{{index == 1 && goodmidlist[0].image }}">
                     <view>
-                        <image src="{{goodmidlist[0].image}}" mode="widthFix"></image>
+                        <image lazy-load='true'   src="{{goodmidlist[0].image}}" mode="widthFix"></image>
                         <text wx:if="{{goodmidlist[0].title}}">{{ goodmidlist[0].title }}</text>
                     </view> 
                   </block> 

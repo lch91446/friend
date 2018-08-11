@@ -224,6 +224,7 @@ Page({
     translateDistance: 0,//动画移动的 距离；
     animationToLarge: {}, //从小变大的动画；
     animationToSmall: {},
+    canCheck: false,
   },
   //触摸开始的事件
   swiperTouchstart: function (e) {
@@ -319,9 +320,22 @@ Page({
 
   },
   toDetailsTap: function (e) {
-    wx.navigateTo({
-      url: "/pages/user/index?userid=" + e.currentTarget.dataset.id
-    })
+
+    if (this.data.canCheck){
+      wx.navigateTo({
+        url: "/pages/user/index?userid=" + e.currentTarget.dataset.id
+      })
+    }else{
+      wx.showModal({
+        title: '',
+        content: '为了公平原则，你需要填写基本个人资料才能查看用户资料,现在就去填写？',
+        success: (rel) => {
+          if(rel.confirm){
+            this.redirectToMy()
+          }
+        }
+      })
+    }
   },
   doLoadData(params) {
     let params3 = {
@@ -449,7 +463,7 @@ Page({
         if (rel.data.code == "1") {
 
           this.setData({
-            swiperList: [...rel.data.data.groupads, ...rel.data.data.groupads]
+            swiperList: [...rel.data.data.groupads]
           });
           wx.getSystemInfo({
             success: (res) => {
@@ -503,7 +517,8 @@ Page({
         if (rel.data.code == "1") {
 
           this.setData({
-            goodmidlist: rel.data.data.groupads//[...rel.data.data.groupads, ...rel.data.data.groupads]
+            goodmidlist: rel.data.data.groupads,
+            canCheck: rel.data.data.canCheck
           });
         } else {
           wx.showModal({
@@ -542,9 +557,36 @@ Page({
       }
     }
   },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      console.log(ops.target)
+    }
+    return {
+      title: app.globalData.shareProfile,
+      path: 'pages/ListView/ListView',
+      imageUrl: app.globalData.shareimageUrl,
+      success: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '转发成功',
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '转发失败',
+        })
+      }
+    }
+  },
   redirectToLogin: function () {
     wx.redirectTo({
       url: '../login/index'
+    })
+  },
+  redirectToMy: function () {
+    wx.switchTab({
+      url: '../my/index',
     })
   },
 })

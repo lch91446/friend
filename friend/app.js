@@ -39,10 +39,11 @@ App({
           params.fail && params.fail(err);
         },
         complete: function () {
-          params.complete && params.complete();
+          
           if (params.needLoadingIndicator) {
             wx.hideLoading();
           }
+          params.complete && params.complete();
         }
       })
     },
@@ -67,8 +68,8 @@ App({
     },
   }, 
   globalData: {
-    userInfo: null,
-    shareProfile: '百款精品商品，总有一款适合您', // 首页转发的时候话术
+    shareProfile: '百款精品商品，总有一款适合您', 
+    shareimageUrl: "http://img.haining.cn/pic/20171208/qi_niu_1512719942777_950_381_448.jpg",
     message1: "超过最多修改次数，请联系管理员进行修改",
     sysAvatar: "http://img.haining.cn/pic/20171208/qi_niu_1512719942777_950_381_448.jpg",
     sysName: "系统消息"

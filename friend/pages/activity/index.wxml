@@ -10,6 +10,12 @@
     <view  class='btn-area'><button class='hadjoin'>已报名</button> </view>
     </block>
     <block wx:else>
-    <view  class='btn-area'><button bindtap='join'>我要报名</button> </view>
+    <form bindsubmit="submitInfo" report-submit='true' >  
+        <!-- <button form-type="submit">  
+                // 此处我们可以定义一些即将要触发的事件的样式
+        </button>   -->
+        <view  class='btn-area'><button form-type="submit">我要报名</button> </view>
+    </form> 
+    
     </block>
 </view>

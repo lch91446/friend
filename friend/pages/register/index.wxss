@@ -1,4 +1,5 @@
-/* @import "../index/index.wxss"; */
+@import "../../utils/wxParse/wxParse.wxss";
+view{overflow: hidden}
 .content{text-align: center;position: relative}
 .logo{margin-top: 50rpx;margin-bottom: 60rpx;position:relative;
 left:150rpx;text-align: left}

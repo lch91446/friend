@@ -1,0 +1,15 @@
+<!--pages/my/index.wxml-->
+<view class="container">
+
+<view class='input-area'>
+  <textarea bindinput="change" value="{{report}}"  placeholder-class="pcolor" maxlength='140' placeholder="请输入您的详细问题，我们将尽快为您解决。"></textarea>
+  <text class='length'>{{length}}/140</text>
+</view>
+
+<view class='btn-area'>
+  <button bindtap='submit'>提交</button>
+</view>
+
+
+</view>
+

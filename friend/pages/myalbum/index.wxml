@@ -12,7 +12,7 @@
    
                                 <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
                                     <view class="weui-uploader__file" bindtap="showGallery" data-current="{{ index }}">
-                                        <image class="weui-uploader__img" src="{{ item.image }}" />
+                                        <image lazy-load='true'  mode="aspectFill" class="weui-uploader__img" src="{{ item.image }}" />
                                     </view>
                                 </block>
                                 <view class="weui-uploader__file" bindtap="uploadImg" >

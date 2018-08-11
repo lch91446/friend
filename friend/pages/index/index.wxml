@@ -5,14 +5,13 @@
        
     <view class='nav-btn-area font-16px'>
       <view class="btn blue">
-        <navigator redirect url="../register/index"><text class="register">注册</text></navigator> 
+        <navigator open-type="redirect" url="../register/index"><text class="register">注册</text></navigator> 
       </view>
       <view class="btn white border-1px">
-        <navigator redirect url="../login/index"><text class="register">已有海论账号 海论账号登录</text></navigator> 
+        <navigator open-type="redirect" url="../login/index"><text class="register">已有海论账号 海论账号登录</text></navigator> 
       </view>
       <view class="txt-area">
-        <navigator redirect url="../ListView/ListView"><text class="register">随便看看</text></navigator> 
+        <navigator open-type="switchTab" url="../ListView/ListView"><text class="register">随便看看</text></navigator> 
       </view>
     </view>
-    <!--<progress class="myprogress" percent="{{percent }}" color="{{color}}" active/>-->
 </view>

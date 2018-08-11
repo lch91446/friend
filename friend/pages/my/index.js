@@ -41,6 +41,9 @@ Page({
     this.setData({
       token: app.jamasTool.getUserToken()
     })
+  },
+  onShow: function(){
+    console.log(this.data.token);
 
     let params3 = {
       url: 'Operate/getMyFansCount',
@@ -55,6 +58,11 @@ Page({
         console.log(rel)
         if (rel.data.code == "1") {
           wx.setStorageSync("userinfo", rel.data.data.userinfo)
+
+          if (rel.data.data.userinfo.avatar === "") {
+            this.redirectFill()
+            return
+          }
           this.setData({
             userInfo: {
               avatarUrl: rel.data.data.userinfo.avatar,
@@ -67,12 +75,12 @@ Page({
             }
           })
           console.log(this.data);
-        } else if (rel.data.code == "401"){
+        } else if (rel.data.code == "401") {
           wx.showModal({
             title: '提示',
             showCancel: false,
             content: rel.data.msg,
-            success: (res)=>{
+            success: (res) => {
               this.redirectToLogin();
             }
           })
@@ -86,9 +94,7 @@ Page({
       }
     }
     app.jamasTool.request(params3);
-  },
-  onShow: function(){
-    console.log("onShow");
+
   },
   uploadTap: function(){
     wx.chooseImage({
@@ -110,18 +116,30 @@ Page({
     }
     return {
       title: app.globalData.shareProfile,
-      path: 'pages/my/index',
+      path: 'pages/ListView/ListView',
+      imageUrl: app.globalData.shareimageUrl,
       success: function (res) {
-        console.log("转发成功:" + JSON.stringify(res));
+        wx.showToast({
+          icon: 'none',
+          title: '转发成功',
+        })
       },
       fail: function (res) {
-        console.log("转发失败:" + JSON.stringify(res));
+        wx.showToast({
+          icon: 'none',
+          title: '转发失败',
+        })
       }
     }
   },
   redirectToLogin: function () {
     wx.redirectTo({
       url: '../login/index'
+    })
+  },
+  redirectFill: function () {
+    wx.redirectTo({
+      url: '../fillinfo/index'
     })
   },
 })

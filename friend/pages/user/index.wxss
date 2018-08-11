@@ -95,10 +95,11 @@
 }
 
 
-.album-area .album{padding-bottom: 20rpx;width:100%;overflow:hidden;position: relative }
-.album .more{position: absolute;bottom: 49rpx;right: 0rpx; justify-content: 
+.album-area .album{width:100%;overflow:hidden;position: relative;padding-bottom: 20rpx; }
+.album .more{position: absolute;bottom: 0rpx;right: 0rpx; justify-content: 
 center;align-items: center;height: 222rpx;width: 222rpx;background-color: rgba(0,0,0,.3);color: #fff}
 .album-area .album-item{
+  position: relative;
   width:222rpx;
   height:222rpx;
   margin-right: 12rpx;
@@ -131,6 +132,5 @@ center;align-items: center;height: 222rpx;width: 222rpx;background-color: rgba(0
 .report-picker .picker{display:inline-block;border-bottom:1px solid #cccccc;height:40rpx;line-height:40rpx;}
 
 .message{color:#00b1ff;font-size: 36rpx;padding-right:5rpx;}
-
 
 

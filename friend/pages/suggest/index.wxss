@@ -1,0 +1,13 @@
+/* pages/my/index.wxss */
+.container {
+  min-height:100vh;
+  font-size: 30rpx
+}
+.input-area{background: #fff;margin-top: 20rpx;padding:0rpx 30rpx;position: relative}
+.pcolor{color: #cccccc;font-size: 30rpx}
+.btn-area{margin-top: 50rpx;padding: 0 100rpx}
+textarea{width: 100%;font-size: 30rpx;}
+.length{position: absolute;color:#cccccc ;bottom: 30rpx;right: 30rpx}
+
+
+

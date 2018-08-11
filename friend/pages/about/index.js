@@ -1,12 +1,13 @@
+var WxParse = require('../../utils/wxParse/wxParse.js');
+
 var app = getApp();
+
 Page({
   data: {
-    articlesList: []
   },
   onLoad: function () {
-
     let params = {
-      url: 'sundry/getMatchmakerList',
+      url: 'sundry/getAbout',
       header: {
         'Content-Type': 'application/json',
       },
@@ -15,14 +16,12 @@ Page({
       },
       needLoadingIndicator: true,
       success: (rel) => {
-        console.log(rel)
-        this.setData({
-          articlesList: rel.data.data.articlesList
-        })
+        var article = rel.data.data.about
+        WxParse.wxParse('article', 'html', article, this, 5);
       }
     }
     app.jamasTool.request(params);
-
+ 
   },
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {

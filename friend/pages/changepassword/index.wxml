@@ -1,0 +1,50 @@
+<!--pages/my/index.wxml-->
+<view class="container">
+    <view>
+      <view class='tapbar'>
+        <view class='cell border-bottom'>
+          <view class='left'>
+          <text>原密码</text>        
+          </view> 
+          <view class='go'>
+            <view>
+              <input password bindchange="oldpassword" value='{{oldpassword}}' placeholder-class="phcolor" placeholder='请输入原密码'></input>
+            </view>  
+          </view>  
+        </view>
+      </view>
+
+      <view class='tapbar'>
+        <view class='cell border-bottom'>
+          <view class='left'>
+          <text>新密码</text>        
+          </view> 
+          <view class='go'>
+            <view>
+              <input password bindchange="password1" value='{{password1}}' placeholder-class="phcolor" placeholder='请设置新密码'></input>
+            </view>  
+          </view>  
+        </view>
+      </view>
+
+
+      <view class='tapbar'>
+        <view class='cell border-bottom'>
+          <view class='left'>
+          <text>确认密码</text>        
+          </view> 
+          <view class='go'>
+            <view>
+              <input password bindchange="password2" value='{{password2}}' placeholder-class="phcolor" placeholder='请再一次确认密码'></input>
+            </view>  
+          </view>  
+        </view>
+      </view>
+
+      <view class='btn-area'>
+        <button bindtap='submit'>确认</button>
+      </view>
+
+    </view>
+
+</view>

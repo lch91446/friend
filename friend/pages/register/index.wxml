@@ -25,12 +25,15 @@
 </block>
 <block wx:else>
 
-111111111
+<import src="../../utils/wxParse/wxParse.wxml"/> 
+<view class="wxParse">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
 <view class="area">
   <view class="btn-area">
       <button  bindtap='tri'>返回</button>
   </view>
-  </view>
+</view>
 </block>
 
 

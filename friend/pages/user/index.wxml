@@ -45,13 +45,16 @@
       <view class='title'>相册</view>
       <view class='album'>
         <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
-          <view wx:if='{{index<6}}' class="album-item" bindtap="showGallery" data-current="{{ index }}">
-            <image class="album-item__img" src="{{ item.image }}" />
+          <view wx:if='{{index<5}}' class="album-item" bindtap="showGallery" data-current="{{ index }}">
+            <image lazy-load mode="aspectFill" class="album-item__img" src="{{ item.image }}" />
+          </view>
+          <view wx:elif='{{index==5}}' class="album-item" bindtap="showGallery" data-current="{{ index }}">
+            <image lazy-load mode="aspectFill" class="album-item__img" src="{{ item.image }}" />
+            <view wx:if='{{urls.length>5}}' class="more flex" bindtap="showGallery" data-current=''>
+              <text>MORE</text>
+            </view>
           </view>
         </block>
-        <view wx:if='{{urls.length>5}}' class="more flex" bindtap="showGallery" data-current=''>
-            <text>MORE</text>
-        </view>
       </view>
     </view>
   </block>
@@ -132,7 +135,7 @@
         </block>
         <block wx:else>
           <block wx:for="{{lableType.label}}" wx:key="index" >
-            <block wx:if="{{lableType.sta}}"><text class='capsule' >{{item.name}}</text>
+            <block wx:if="{{item.sta}}"><text class='capsule' >{{item.name}}</text>
             </block>
           </block>
         </block>
